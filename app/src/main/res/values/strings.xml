@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">ExampleShop</string>
+    <string name="field_email">E-mail</string>
+    <string name="field_username">Имя</string>
+    <string name="field_password">Пароль</string>
+    <string name="action_create_account">Создать учетную запись</string>
+    <string name="action_sign_in">Вход</string>
+    <string name="field_is_empty">заполните поле</string>
+    <string name="invalid_email_or_password">Неверный логин или пароль</string>
+    <string name="account_already_exists">Учетная запись уже существует</string>
+    <string name="sign_up_success">Вы создали новую учетную запись. Теперь вы можете войти с его помощью в систему.</string>
+    <string name="field_repeat_password">Повторите пароль</string>
+    <string name="password_mismatch">Несоответствие пароля</string>
+    <string name="add_product">Добавить товар</string>
+</resources>
