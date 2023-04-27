@@ -2,7 +2,6 @@ package com.example.exampleshop.app.screens.main.auth
 
 import androidx.annotation.StringRes
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.exampleshop.R
 import com.example.exampleshop.app.model.AccountAlreadyExistsException
@@ -21,7 +20,6 @@ import com.example.exampleshop.app.utils.share
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import kotlin.math.log
 
 @HiltViewModel
 class SignUpViewModel @Inject constructor(
@@ -62,6 +60,8 @@ class SignUpViewModel @Inject constructor(
             Field.Email -> _state.requireValue()
                 .copy(emailErrorMessageRes = R.string.field_is_empty)
             Field.Login -> _state.requireValue()
+                .copy(loginErrorMessageRes = R.string.field_is_empty)
+            Field.UserName -> _state.requireValue()
                 .copy(usernameErrorMessageRes = R.string.field_is_empty)
             Field.Password -> _state.requireValue()
                 .copy(passwordErrorMessageRes = R.string.field_is_empty)
@@ -91,6 +91,7 @@ class SignUpViewModel @Inject constructor(
     private fun goBack() = _goBackEvent.publishEvent()
 
     data class State(
+        @StringRes val loginErrorMessageRes: Int = NO_ERROR_MESSAGE,
         @StringRes val usernameErrorMessageRes: Int = NO_ERROR_MESSAGE,
         @StringRes val emailErrorMessageRes: Int = NO_ERROR_MESSAGE,
         @StringRes val passwordErrorMessageRes: Int = NO_ERROR_MESSAGE,

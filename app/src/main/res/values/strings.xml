@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">ExampleShop</string>
     <string name="field_email">E-mail</string>
-    <string name="field_username">Имя</string>
+    <string name="field_login">Логин</string>
+    <string name="field_user_name">Имя пользователя</string>
     <string name="field_password">Пароль</string>
     <string name="action_create_account">Создать учетную запись</string>
     <string name="action_sign_in">Вход</string>

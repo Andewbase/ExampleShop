@@ -7,6 +7,7 @@ import com.example.exampleshop.app.model.PasswordMismatchException
 
 data class SignUpData(
     val login: String,
+    val userName: String,
     val password: String,
     val email: String,
     val repeatPassword: String
@@ -14,6 +15,7 @@ data class SignUpData(
 
     fun validate() {
         if (login.isBlank()) throw EmptyFieldException(Field.Login)
+        if (userName.isBlank()) throw EmptyFieldException(Field.UserName)
         if (password.isBlank()) throw EmptyFieldException(Field.Password)
         if (email.isBlank()) throw EmptyFieldException(Field.Email)
         if (password != repeatPassword) throw PasswordMismatchException()

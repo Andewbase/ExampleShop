@@ -15,7 +15,7 @@
             android:id="@+id/loginTextInput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/field_username"
+            android:hint="@string/field_login"
             app:layout_constraintVertical_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -28,7 +28,7 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>(FragmentSignUpBinding
         binding.createAccountButton.setOnClickListener { onCreateAccountButtonPressed() }
 
         if (savedInstanceState == null && getLoginArgument() != null){
-            binding.usernameEditText.setText(getLoginArgument())
+            binding.loginEditText.setText(getLoginArgument())
         }
 
         observeState()
@@ -38,7 +38,8 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>(FragmentSignUpBinding
 
     private fun onCreateAccountButtonPressed() {
         val signUpData = SignUpData(
-            login = binding.usernameEditText.text.toString(),
+            login = binding.loginEditText.text.toString(),
+            userName = binding.userNameEditText.text.toString(),
             email = binding.emailEditText.text.toString(),
             password = binding.passwordEditText.text.toString(),
             repeatPassword = binding.repeatPasswordEditText.text.toString()
@@ -49,12 +50,14 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>(FragmentSignUpBinding
     private fun observeState() = viewModel.state.observe(viewLifecycleOwner) { state ->
         binding.createAccountButton.isEnabled = state.enableViews
         binding.emailTextInput.isEnabled = state.enableViews
-        binding.usernameTextInput.isEnabled = state.enableViews
+        binding.loginTextInput.isEnabled = state.enableViews
+        binding.userNameTextInput.isEnabled = state.enableViews
         binding.passwordTextInput.isEnabled = state.enableViews
         binding.repeatPasswordTextInput.isEnabled = state.enableViews
 
         fillError(binding.emailTextInput, state.emailErrorMessageRes)
-        fillError(binding.usernameTextInput, state.usernameErrorMessageRes)
+        fillError(binding.loginTextInput, state.loginErrorMessageRes)
+        fillError(binding.userNameTextInput, state.usernameErrorMessageRes)
         fillError(binding.passwordTextInput, state.passwordErrorMessageRes)
         fillError(binding.repeatPasswordTextInput, state.repeatPasswordErrorMessageRes)
 

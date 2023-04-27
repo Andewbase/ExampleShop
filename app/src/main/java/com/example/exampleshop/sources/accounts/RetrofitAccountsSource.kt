@@ -23,7 +23,7 @@ class RetrofitAccountsSource @Inject constructor(
     }
 
     override suspend fun signUp(signUpData: SignUpData) {
-        val signUpRequestEntity = SignUpRequestEntity(signUpData.login, signUpData.password, signUpData.email)
+        val signUpRequestEntity = SignUpRequestEntity(signUpData.login, signUpData.password, signUpData.email, signUpData.userName)
         accountsApi.signUp(signUpRequestEntity)
     }
 
