@@ -40,8 +40,5 @@ class DetailProductViewModel @Inject constructor(
         }
     }
 
-    fun reload(){
-        repository.reloadProduct()
-    }
 
 }

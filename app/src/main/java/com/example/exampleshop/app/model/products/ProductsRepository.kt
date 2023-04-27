@@ -35,20 +35,12 @@ class ProductsRepository @Inject constructor(
         }
     }
 
-    suspend fun searchProducts(searchQuery: String): Products{
-        return productsSource.searchProducts(searchQuery)
-    }
-
     fun getAllProducts(): Flow<Result<List<Product>>> {
        return productsLazyFlowSubject.listen(Unit)
     }
 
     fun getProduct(product: String): Flow<Result<List<Product>>>{
         return productLazyFlowSubject.listen(product)
-    }
-
-    fun reloadProduct(){
-        productLazyFlowSubject.reloadAll()
     }
 
 }
