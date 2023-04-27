@@ -24,7 +24,7 @@ class SignInFragment : BaseFragment<FragmentSignInBinding>(FragmentSignInBinding
         observeState()
         observeClearPasswordEvent()
         observeShowAuthErrorMessageEvent()
-        observeNavigateToProductsEvent()
+        observeNavigateToTabsEvent()
     }
 
     private fun onSignInButtonPressed() {
@@ -53,8 +53,8 @@ class SignInFragment : BaseFragment<FragmentSignInBinding>(FragmentSignInBinding
         binding.passwordEditText.text?.clear()
     }
 
-    private fun observeNavigateToProductsEvent() = viewModel.navigateToProductsEvent.observeEvent(viewLifecycleOwner) {
-        findNavController().navigate(R.id.action_signInFragment_to_productListFragment)
+    private fun observeNavigateToTabsEvent() = viewModel.navigateToTabsEvent.observeEvent(viewLifecycleOwner) {
+        findNavController().navigate(R.id.action_signInFragment_to_tabsFragment)
     }
 
     private fun onSignUpButtonPressed() {

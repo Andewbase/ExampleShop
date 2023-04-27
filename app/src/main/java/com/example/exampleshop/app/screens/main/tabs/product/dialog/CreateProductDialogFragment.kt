@@ -1,4 +1,4 @@
-package com.example.exampleshop.app.screens.main.product.dialog
+package com.example.exampleshop.app.screens.main.tabs.product.dialog
 
 
 import android.os.Bundle
@@ -36,7 +36,7 @@ class CreateProductDialogFragment: BaseDialogFragment<CreateProductDialogBinding
             price = priceProduct.toDouble()
         )
         viewModel.createProduct(createProduct)
-        val action = R.id.action_createProductDialogFragment_to_productListFragment
+        val action = R.id.action_createProductDialogFragment2_to_listProductsFragment
         findNavController().navigate(action)
     }
 

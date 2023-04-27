@@ -1,6 +1,6 @@
 package com.example.exampleshop.app.model.products.entities
 
-import com.example.exampleshop.app.screens.main.product.adapter.ProductItem
+import com.example.exampleshop.app.screens.main.tabs.product.adapter.ProductItem
 
 data class Product(
     val productId: String,

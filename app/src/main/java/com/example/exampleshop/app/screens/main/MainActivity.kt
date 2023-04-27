@@ -11,7 +11,7 @@ import androidx.navigation.NavDestination
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.example.exampleshop.R
-import com.example.exampleshop.app.screens.main.product.ListProductsFragment
+import com.example.exampleshop.app.screens.main.tabs.TabsFragment
 import com.example.exampleshop.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.regex.Pattern
@@ -23,13 +23,13 @@ class MainActivity : AppCompatActivity() {
 
     private val viewModel by viewModels<MainActivityViewModel>()
 
-    private val topLevelDestinations = setOf(getListProductDestination(), getSignInDestination())
+    private val topLevelDestinations = setOf(getTabsDestination(), getSignInDestination())
 
     // fragment listener is sued for tracking current nav controller
     private val fragmentListener = object : FragmentManager.FragmentLifecycleCallbacks() {
         override fun onFragmentViewCreated(fm: FragmentManager, f: Fragment, v: View, savedInstanceState: Bundle?) {
             super.onFragmentViewCreated(fm, f, v, savedInstanceState)
-            if (f is ListProductsFragment || f is NavHostFragment) return
+            if (f is TabsFragment || f is NavHostFragment) return
             onNavControllerActivated(f.findNavController())
         }
     }
@@ -40,12 +40,15 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater).also { setContentView(it.root) }
         setSupportActionBar(binding.toolbar)
 
+        // preparing root nav controller
         val navController = getRootNavController()
-
         prepareRootNavController(isSignedIn(), navController)
         onNavControllerActivated(navController)
 
-        viewModel.login.observe(this){
+        supportFragmentManager.registerFragmentLifecycleCallbacks(fragmentListener, true)
+
+        // updating username in the toolbar
+        viewModel.login.observe(this) {
             binding.loginTextView.text = it
         }
     }
@@ -71,7 +74,7 @@ class MainActivity : AppCompatActivity() {
         val graph = navController.navInflater.inflate(getMainNavigationGraphId())
         graph.setStartDestination(
             if (isSignedIn) {
-                getListProductDestination()
+                getTabsDestination()
             } else {
                 getSignInDestination()
             }
@@ -134,7 +137,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun getMainNavigationGraphId(): Int = R.navigation.main_graph
 
-    private fun getListProductDestination(): Int = R.id.productListFragment
+    private fun getTabsDestination(): Int = R.id.tabsFragment
 
     private fun getSignInDestination(): Int = R.id.signInFragment
 }

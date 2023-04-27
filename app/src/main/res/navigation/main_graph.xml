@@ -24,36 +24,12 @@
             android:id="@+id/action_signInFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
         <action
-            android:id="@+id/action_signInFragment_to_productListFragment"
-            app:destination="@id/productListFragment" />
+            android:id="@+id/action_signInFragment_to_tabsFragment"
+            app:destination="@id/tabsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/productListFragment"
-        android:name="com.example.exampleshop.app.screens.main.product.ListProductsFragment"
-        android:label="fragment_product_list"
-        tools:layout="@layout/fragment_product_list" >
-        <action
-            android:id="@+id/action_productListFragment_to_detailsProductsFragment"
-            app:destination="@id/detailsProductsFragment" />
-        <action
-            android:id="@+id/action_productListFragment_to_createProductDialogFragment"
-            app:destination="@id/createProductDialogFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/detailsProductsFragment"
-        android:name="com.example.exampleshop.app.screens.main.product.DetailsProductsFragment"
-        android:label="fragment_details_product"
-        tools:layout="@layout/fragment_details_product" >
-        <argument
-            android:name="nameProduct"
-            app:argType="string" />
-    </fragment>
-    <dialog
-        android:id="@+id/createProductDialogFragment"
-        android:name="com.example.exampleshop.app.screens.main.product.dialog.CreateProductDialogFragment"
-        android:label="CreateProductDialogFragment" >
-        <action
-            android:id="@+id/action_createProductDialogFragment_to_productListFragment"
-            app:destination="@id/productListFragment" />
-    </dialog>
+        android:id="@+id/tabsFragment"
+        android:name="com.example.exampleshop.app.screens.main.tabs.TabsFragment"
+        android:label="fragment_tabs"
+        tools:layout="@layout/fragment_tabs" />
 </navigation>

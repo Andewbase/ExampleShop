@@ -1,11 +1,8 @@
-package com.example.exampleshop.app.screens.main.product
+package com.example.exampleshop.app.screens.main.tabs.product
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.exampleshop.app.model.Error
 import com.example.exampleshop.app.model.Result
-import com.example.exampleshop.app.model.Success
 import com.example.exampleshop.app.model.accounts.AccountsRepository
 import com.example.exampleshop.app.model.products.ProductsRepository
 import com.example.exampleshop.app.model.products.entities.Product
@@ -17,28 +14,28 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class DetailProductViewModel @Inject constructor(
-    private val repository: ProductsRepository,
+class ListProductViewModel @Inject constructor(
+    private val productsRepository: ProductsRepository,
     accountsRepository: AccountsRepository,
     logger: Logger
 ): BaseViewModel(accountsRepository, logger) {
 
-    private var _product: MutableLiveData<Result<List<Product>>> = MutableLiveData()
-    val product = _product.share()
+    private var _products: MutableLiveData<Result<List<Product>>> = MutableLiveData()
+    val products = _products.share()
 
-    fun getProduct(nameProduct: String){
+    private var _settings: MutableLiveData<Boolean> = MutableLiveData()
+    val settings = _settings.share()
+
+    init {
+        getProducts()
+    }
+
+    private fun getProducts(){
         viewModelScope.launch {
-            repository.getProduct(nameProduct).collect{
-                if (it is Success){
-                    _product.value = it
-                }else if (it is Error){
-                   val e = it.error
-                    Log.d("moshiError", "$e")
-                }
-
+            productsRepository.getAllProducts().collect{
+                _products.value = it
             }
         }
     }
-
 
 }

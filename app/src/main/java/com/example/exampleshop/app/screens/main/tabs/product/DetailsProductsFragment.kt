@@ -1,4 +1,4 @@
-package com.example.exampleshop.app.screens.main.product
+package com.example.exampleshop.app.screens.main.tabs.product
 
 import android.os.Bundle
 import android.view.View

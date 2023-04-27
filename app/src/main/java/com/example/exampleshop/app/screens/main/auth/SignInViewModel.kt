@@ -33,15 +33,15 @@ class SignInViewModel @Inject constructor(
     private val _showAuthErrorToastEvent = MutableLiveEvent<Int>()
     val showAuthToastEvent = _showAuthErrorToastEvent.share()
 
-    private val _navigateToProductsEvent = MutableUnitLiveEvent()
-    val navigateToProductsEvent = _navigateToProductsEvent.share()
+    private val _navigateToTabsEvent = MutableUnitLiveEvent()
+    val navigateToTabsEvent = _navigateToTabsEvent.share()
 
     fun signIn(login: String, password: String) {
         viewModelScope.launch {
             showProgress()
             try {
                 accountsRepository.signIn(login, password)
-                launchProductsScreen()
+                launchTabsScreen()
             } catch (e: EmptyFieldException) {
                 processEmptyFieldException(e)
             } catch (e: InvalidCredentialsException) {
@@ -77,7 +77,7 @@ class SignInViewModel @Inject constructor(
 
     private fun clearPasswordField() = _clearPasswordEvent.publishEvent()
 
-    private fun launchProductsScreen() = _navigateToProductsEvent.publishEvent()
+    private fun launchTabsScreen() = _navigateToTabsEvent.publishEvent()
 
     data class State(
         val emptyLoginError: Boolean = false,

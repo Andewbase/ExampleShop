@@ -56,7 +56,7 @@ abstract class BaseFragment<VB: ViewBinding>(
 
     private fun restartWithSignIn() {
         findTopNavController().navigate(R.id.signInFragment, null, navOptions {
-            popUpTo(R.id.productListFragment) {
+            popUpTo(R.id.tabsFragment) {
                 inclusive = true
             }
         })

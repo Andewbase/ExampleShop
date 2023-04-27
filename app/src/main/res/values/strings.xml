@@ -17,8 +17,14 @@
     <string name="price_product">Цена</string>
     <string name="add_product_btn">Добавить Товар</string>
 
+    <string name="action_try_again">Обновить</string>
     <string name="auth_error">Срок действия сеанса пользователя истек</string>
     <string name="connection_error">Не удается подключиться к серверу</string>
     <string name="internal_error">Внутренняя ошибка! Пожалуйста, попробуйте еще раз позже.</string>
     <string name="please_wait">Пожалуйста подождите</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="product_list">Список продуктов</string>
+    <string name="profile">Аккаунт</string>
+    <string name="action_edit_profile">Редактировать профиль</string>
+    <string name="action_logout">Выход из аккаунта</string>
 </resources>

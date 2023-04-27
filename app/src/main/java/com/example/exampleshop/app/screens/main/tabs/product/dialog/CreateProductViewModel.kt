@@ -1,4 +1,4 @@
-package com.example.exampleshop.app.screens.main.product.dialog
+package com.example.exampleshop.app.screens.main.tabs.product.dialog
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

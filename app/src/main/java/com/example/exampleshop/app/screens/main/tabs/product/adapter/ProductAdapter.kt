@@ -1,4 +1,4 @@
-package com.example.exampleshop.app.screens.main.product.adapter
+package com.example.exampleshop.app.screens.main.tabs.product.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.exampleshop.databinding.ItemProductBinding
 
-class ProductAdapter: ListAdapter<ProductItem, ProductAdapter.ProductViewHolder>(DiffUtilCallbackProduct) {
+class ProductAdapter: ListAdapter<ProductItem, ProductAdapter.ProductViewHolder>(
+    DiffUtilCallbackProduct
+) {
 
     private var onItemClick: OnItemClick? = null
 
@@ -30,14 +32,14 @@ class ProductAdapter: ListAdapter<ProductItem, ProductAdapter.ProductViewHolder>
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): ProductAdapter.ProductViewHolder {
+    ): ProductViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemProductBinding.inflate(inflater, parent, false)
 
         return ProductViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: ProductAdapter.ProductViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         val productItem = getItem(position)
 
         holder.bind(productItem)

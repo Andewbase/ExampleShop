@@ -1,4 +1,4 @@
-package com.example.exampleshop.app.screens.main.product
+package com.example.exampleshop.app.screens.main.tabs.product
 
 
 import android.os.Bundle
@@ -12,8 +12,8 @@ import com.example.exampleshop.app.model.Error
 import com.example.exampleshop.app.model.Pending
 import com.example.exampleshop.app.model.Success
 import com.example.exampleshop.app.screens.base.BaseFragment
-import com.example.exampleshop.app.screens.main.product.adapter.ProductAdapter
-import com.example.exampleshop.app.screens.main.product.adapter.ProductItem
+import com.example.exampleshop.app.screens.main.tabs.product.adapter.ProductAdapter
+import com.example.exampleshop.app.screens.main.tabs.product.adapter.ProductItem
 import com.example.exampleshop.databinding.FragmentProductListBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -55,7 +55,10 @@ class ListProductsFragment : BaseFragment<FragmentProductListBinding>(FragmentPr
 
         adapter.setOnClick(object : ProductAdapter.OnItemClick{
             override fun onItemClick(productItem: ProductItem) {
-                val action = ListProductsFragmentDirections.actionProductListFragmentToDetailsProductsFragment(productItem.title)
+                val action =
+                    ListProductsFragmentDirections.actionListProductsFragmentToDetailsProductsFragment2(
+                        productItem.title
+                    )
                 findNavController().navigate(action)
             }
 
@@ -64,6 +67,6 @@ class ListProductsFragment : BaseFragment<FragmentProductListBinding>(FragmentPr
         binding.addProductButton.setOnClickListener { findNavController().navigate(goCreateDialog()) }
     }
 
-    private fun goCreateDialog() = R.id.action_productListFragment_to_createProductDialogFragment
+    private fun goCreateDialog() = R.id.action_listProductsFragment_to_createProductDialogFragment2
 
 }
