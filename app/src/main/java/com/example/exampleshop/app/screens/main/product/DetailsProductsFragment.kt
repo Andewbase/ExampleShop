@@ -16,7 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class DetailsProductsFragment : BaseFragment<FragmentDetailsProductBinding>(FragmentDetailsProductBinding::inflate) {
 
-    private val viewModel by viewModels<DetailProductViewModel>()
+    override val viewModel by viewModels<DetailProductViewModel>()
 
     private val safeArgs: DetailsProductsFragmentArgs by navArgs()
 

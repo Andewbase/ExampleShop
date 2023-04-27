@@ -11,19 +11,23 @@ import com.example.exampleshop.app.model.Field
 import com.example.exampleshop.app.model.PasswordMismatchException
 import com.example.exampleshop.app.model.accounts.AccountsRepository
 import com.example.exampleshop.app.model.accounts.entities.SignUpData
+import com.example.exampleshop.app.screens.base.BaseViewModel
 import com.example.exampleshop.app.utils.MutableLiveEvent
 import com.example.exampleshop.app.utils.MutableUnitLiveEvent
+import com.example.exampleshop.app.utils.logger.Logger
 import com.example.exampleshop.app.utils.publishEvent
 import com.example.exampleshop.app.utils.requireValue
 import com.example.exampleshop.app.utils.share
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlin.math.log
 
 @HiltViewModel
 class SignUpViewModel @Inject constructor(
-    private val accountsRepository: AccountsRepository
-): ViewModel() {
+     accountsRepository: AccountsRepository,
+     logger: Logger
+): BaseViewModel(accountsRepository, logger) {
 
     private val _goBackEvent = MutableUnitLiveEvent()
     val goBackEvent = _goBackEvent.share()

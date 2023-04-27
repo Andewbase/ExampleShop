@@ -12,4 +12,13 @@
     <string name="field_repeat_password">Повторите пароль</string>
     <string name="password_mismatch">Несоответствие пароля</string>
     <string name="add_product">Добавить товар</string>
+    <string name="name_product">Название продукта</string>
+    <string name="description_product">Описание продукта</string>
+    <string name="price_product">Цена</string>
+    <string name="add_product_btn">Добавить Товар</string>
+
+    <string name="auth_error">Срок действия сеанса пользователя истек</string>
+    <string name="connection_error">Не удается подключиться к серверу</string>
+    <string name="internal_error">Внутренняя ошибка! Пожалуйста, попробуйте еще раз позже.</string>
+    <string name="please_wait">Пожалуйста подождите</string>
 </resources>

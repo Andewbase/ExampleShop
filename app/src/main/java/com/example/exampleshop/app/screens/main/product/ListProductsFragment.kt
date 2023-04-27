@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.exampleshop.R
 import com.example.exampleshop.app.model.Empty
 import com.example.exampleshop.app.model.Error
 import com.example.exampleshop.app.model.Pending
@@ -19,7 +20,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class ListProductsFragment : BaseFragment<FragmentProductListBinding>(FragmentProductListBinding::inflate) {
 
-    private val viewModel by viewModels<ListProductViewModel>()
+    override val viewModel by viewModels<ListProductViewModel>()
 
     private val adapter by lazy { ProductAdapter() }
 
@@ -59,6 +60,10 @@ class ListProductsFragment : BaseFragment<FragmentProductListBinding>(FragmentPr
             }
 
         })
+
+        binding.addProductButton.setOnClickListener { findNavController().navigate(goCreateDialog()) }
     }
+
+    private fun goCreateDialog() = R.id.action_productListFragment_to_createProductDialogFragment
 
 }

@@ -1,9 +1,11 @@
 package com.example.exampleshop.sources.accounts
 
+import com.example.exampleshop.sources.accounts.entities.GetAccountResponseEntity
 import com.example.exampleshop.sources.accounts.entities.SignInRequestEntity
 import com.example.exampleshop.sources.accounts.entities.SignInResponseEntity
 import com.example.exampleshop.sources.accounts.entities.SignUpRequestEntity
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface AccountsApi {
@@ -14,4 +16,6 @@ interface AccountsApi {
     @POST("register")
     suspend fun signUp(@Body body: SignUpRequestEntity)
 
+    @GET("me")
+    suspend fun getAccount(): GetAccountResponseEntity
 }

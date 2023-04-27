@@ -1,15 +1,16 @@
 package com.example.exampleshop.app.screens.main.auth
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.exampleshop.R
 import com.example.exampleshop.app.model.EmptyFieldException
 import com.example.exampleshop.app.model.Field
 import com.example.exampleshop.app.model.InvalidCredentialsException
 import com.example.exampleshop.app.model.accounts.AccountsRepository
+import com.example.exampleshop.app.screens.base.BaseViewModel
 import com.example.exampleshop.app.utils.MutableLiveEvent
 import com.example.exampleshop.app.utils.MutableUnitLiveEvent
+import com.example.exampleshop.app.utils.logger.Logger
 import com.example.exampleshop.app.utils.publishEvent
 import com.example.exampleshop.app.utils.requireValue
 import com.example.exampleshop.app.utils.share
@@ -17,11 +18,11 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-
 @HiltViewModel
 class SignInViewModel @Inject constructor(
-    private val accountsRepository: AccountsRepository
-): ViewModel() {
+     accountsRepository: AccountsRepository,
+     logger: Logger
+): BaseViewModel(accountsRepository, logger) {
 
     private val _state = MutableLiveData(State())
     val state = _state.share()

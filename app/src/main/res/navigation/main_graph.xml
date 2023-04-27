@@ -35,6 +35,9 @@
         <action
             android:id="@+id/action_productListFragment_to_detailsProductsFragment"
             app:destination="@id/detailsProductsFragment" />
+        <action
+            android:id="@+id/action_productListFragment_to_createProductDialogFragment"
+            app:destination="@id/createProductDialogFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailsProductsFragment"
@@ -45,4 +48,12 @@
             android:name="nameProduct"
             app:argType="string" />
     </fragment>
+    <dialog
+        android:id="@+id/createProductDialogFragment"
+        android:name="com.example.exampleshop.app.screens.main.product.dialog.CreateProductDialogFragment"
+        android:label="CreateProductDialogFragment" >
+        <action
+            android:id="@+id/action_createProductDialogFragment_to_productListFragment"
+            app:destination="@id/productListFragment" />
+    </dialog>
 </navigation>

@@ -18,7 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class SignUpFragment : BaseFragment<FragmentSignUpBinding>(FragmentSignUpBinding::inflate) {
 
-    private val viewModel by viewModels<SignUpViewModel>()
+    override val viewModel by viewModels<SignUpViewModel>()
 
     private val args by navArgs<SignUpFragmentArgs>()
 
