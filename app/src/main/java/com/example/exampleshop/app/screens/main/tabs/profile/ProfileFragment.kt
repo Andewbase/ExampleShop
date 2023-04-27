@@ -21,6 +21,8 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        observeAccountDetails()
+
         binding.logoutButton.setOnClickListener { logout() }
     }
 

@@ -31,7 +31,7 @@
         <TextView
             android:id="@+id/usernameHintTextView"
             style="@style/ProfileHintTextView"
-            android:text="@string/field_login"
+            android:text="@string/field_user_name"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintTop_toBottomOf="@id/emailHintTextView"/>
