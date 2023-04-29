@@ -1,5 +1,6 @@
 package com.example.exampleshop.app.model.accounts
 
+import com.example.exampleshop.app.AdminConst.ADMIN_TOKEN
 import com.example.exampleshop.app.model.AccountAlreadyExistsException
 import com.example.exampleshop.app.model.AuthException
 import com.example.exampleshop.app.model.BackendException
@@ -21,6 +22,10 @@ class AccountsRepository @Inject constructor(
 
     private val accountLazyFlowSubject = LazyFlowSubject<Unit, Account> {
         doGetAccount()
+    }
+
+    fun isAdmin(): Boolean{
+        return appSettings.getCurrentToken() == ADMIN_TOKEN
     }
 
     fun isSignedIn(): Boolean {

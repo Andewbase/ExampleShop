@@ -28,6 +28,14 @@ class ListProductViewModel @Inject constructor(
 
     init {
         getProducts()
+        checkAccount()
+    }
+
+    private fun checkAccount(){
+        viewModelScope.launch {
+            val account = accountsRepository.isAdmin()
+            _settings.value = account
+        }
     }
 
     private fun getProducts(){
