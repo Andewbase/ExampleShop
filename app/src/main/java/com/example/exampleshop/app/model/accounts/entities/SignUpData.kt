@@ -1,8 +1,8 @@
 package com.example.exampleshop.app.model.accounts.entities
 
-import com.example.exampleshop.app.model.EmptyFieldException
-import com.example.exampleshop.app.model.Field
+import com.example.exampleshop.app.model.EmptySignUpFieldException
 import com.example.exampleshop.app.model.PasswordMismatchException
+import com.example.exampleshop.app.model.field.SignUpField
 
 
 data class SignUpData(
@@ -14,10 +14,10 @@ data class SignUpData(
 ) {
 
     fun validate() {
-        if (login.isBlank()) throw EmptyFieldException(Field.Login)
-        if (userName.isBlank()) throw EmptyFieldException(Field.UserName)
-        if (password.isBlank()) throw EmptyFieldException(Field.Password)
-        if (email.isBlank()) throw EmptyFieldException(Field.Email)
+        if (login.isBlank()) throw EmptySignUpFieldException(SignUpField.LOGIN)
+        if (userName.isBlank()) throw EmptySignUpFieldException(SignUpField.USERNAME)
+        if (password.isBlank()) throw EmptySignUpFieldException(SignUpField.PASSWORD)
+        if (email.isBlank()) throw EmptySignUpFieldException(SignUpField.EMAIL)
         if (password != repeatPassword) throw PasswordMismatchException()
     }
 }

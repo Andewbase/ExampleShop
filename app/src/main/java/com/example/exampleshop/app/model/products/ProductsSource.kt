@@ -1,12 +1,12 @@
 package com.example.exampleshop.app.model.products
 
-import com.example.exampleshop.app.model.products.entities.CreateProdut
+import com.example.exampleshop.app.model.products.entities.CreateProduct
 import com.example.exampleshop.app.model.products.entities.Product
 import com.example.exampleshop.app.model.products.entities.Products
 
 interface ProductsSource {
 
-    suspend fun createProdut(createProdut: CreateProdut)
+    suspend fun createProduct(createProduct: CreateProduct)
 
     suspend fun searchProducts(searchQuery: String): Products
 

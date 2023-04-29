@@ -30,6 +30,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
         viewModel.account.observe(viewLifecycleOwner){result ->
             when(result){
                 is Success -> {
+                    binding.profileProgressBar.visibility = View.INVISIBLE
                     binding.emailTextView.text = result.value.email
                     binding.usernameTextView.text = result.value.username
                 }

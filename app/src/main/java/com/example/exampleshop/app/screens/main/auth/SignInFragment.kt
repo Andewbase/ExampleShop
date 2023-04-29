@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.exampleshop.R
+import com.example.exampleshop.app.model.accounts.entities.SignInData
 import com.example.exampleshop.app.screens.base.BaseFragment
 import com.example.exampleshop.app.utils.observeEvent
 import com.example.exampleshop.databinding.FragmentSignInBinding
@@ -28,10 +29,11 @@ class SignInFragment : BaseFragment<FragmentSignInBinding>(FragmentSignInBinding
     }
 
     private fun onSignInButtonPressed() {
-        viewModel.signIn(
+        val signInData = SignInData(
             login = binding.loginEditText.text.toString(),
             password = binding.passwordEditText.text.toString()
         )
+        viewModel.signIn(signInData)
     }
 
     private fun observeState() = viewModel.state.observe(viewLifecycleOwner) {

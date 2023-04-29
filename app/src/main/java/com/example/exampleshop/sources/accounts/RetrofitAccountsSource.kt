@@ -2,6 +2,7 @@ package com.example.exampleshop.sources.accounts
 
 import com.example.exampleshop.app.model.accounts.AccountsSource
 import com.example.exampleshop.app.model.accounts.entities.Account
+import com.example.exampleshop.app.model.accounts.entities.SignInData
 import com.example.exampleshop.app.model.accounts.entities.SignUpData
 import com.example.exampleshop.sources.accounts.entities.SignInRequestEntity
 import com.example.exampleshop.sources.accounts.entities.SignUpRequestEntity
@@ -17,8 +18,8 @@ class RetrofitAccountsSource @Inject constructor(
 
     private val accountsApi = retrofit.create(AccountsApi::class.java)
 
-    override suspend fun signIn(login: String, password: String): String = wrapRetrofitExceptions {
-        val signInRequestEntity = SignInRequestEntity(login, password)
+    override suspend fun signIn(signInData: SignInData): String = wrapRetrofitExceptions {
+        val signInRequestEntity = SignInRequestEntity(signInData.login, signInData.password)
         accountsApi.signIn(signInRequestEntity).token
     }
 

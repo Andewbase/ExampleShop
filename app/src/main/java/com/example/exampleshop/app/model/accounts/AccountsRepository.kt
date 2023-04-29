@@ -3,11 +3,10 @@ package com.example.exampleshop.app.model.accounts
 import com.example.exampleshop.app.model.AccountAlreadyExistsException
 import com.example.exampleshop.app.model.AuthException
 import com.example.exampleshop.app.model.BackendException
-import com.example.exampleshop.app.model.EmptyFieldException
-import com.example.exampleshop.app.model.Field
 import com.example.exampleshop.app.model.InvalidCredentialsException
 import com.example.exampleshop.app.model.Result
 import com.example.exampleshop.app.model.accounts.entities.Account
+import com.example.exampleshop.app.model.accounts.entities.SignInData
 import com.example.exampleshop.app.model.accounts.entities.SignUpData
 import com.example.exampleshop.app.model.settings.AppSettings
 import com.example.exampleshop.app.model.wrapBackendExceptions
@@ -29,12 +28,11 @@ class AccountsRepository @Inject constructor(
         return appSettings.getCurrentToken() != null
     }
 
-    suspend fun signIn(login: String, password: String){
-        if (login.isBlank()) throw EmptyFieldException(Field.Login)
-        if (password.isBlank()) throw EmptyFieldException(Field.Password)
+    suspend fun signIn(signInData: SignInData){
+        signInData.validate()
 
         val token = try {
-            accountsSource.signIn(login, password)
+            accountsSource.signIn(signInData)
         }catch (e: Exception){
             if (e is BackendException && e.code == 401) {
                 // map 401 error for sign-in to InvalidCredentialsException
@@ -46,7 +44,7 @@ class AccountsRepository @Inject constructor(
 
         appSettings.setCurrentToken(token)
 
-        accountsSource.signIn(login, password)
+        accountsSource.signIn(signInData)
     }
 
     suspend fun signUp(signUpData: SignUpData) {

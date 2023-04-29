@@ -6,11 +6,11 @@ data class Product(
     val productId: String,
     val title: String,
     val description: String,
-    val price: Double
+    val price: String
 ){
    fun toProductItem(): ProductItem = ProductItem(
        productId = productId,
        title = title,
-       price = price.toString()
+       price = price
    )
 }

@@ -1,12 +1,12 @@
 package com.example.exampleshop.sources.products
 
 import com.example.exampleshop.app.model.products.ProductsSource
-import com.example.exampleshop.app.model.products.entities.CreateProdut
+import com.example.exampleshop.app.model.products.entities.CreateProduct
 import com.example.exampleshop.app.model.products.entities.Product
 import com.example.exampleshop.app.model.products.entities.Products
 import com.example.exampleshop.sources.base.BaseRetrofitSource
 import com.example.exampleshop.sources.base.RetrofitConfig
-import com.example.exampleshop.sources.products.entities.CreateProdutRequestEntity
+import com.example.exampleshop.sources.products.entities.CreateProductRequestEntity
 import com.example.exampleshop.sources.products.entities.FetchProductRequest
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -18,8 +18,8 @@ class RetrofitProductsSource @Inject constructor(
 
     private val productsApi = retrofit.create(ProductsApi::class.java)
 
-    override suspend fun createProdut(createProdut: CreateProdut) {
-        val createProductsRequestEntity = CreateProdutRequestEntity(createProdut.title, createProdut.description, createProdut.price)
+    override suspend fun createProduct(createProduct: CreateProduct) {
+        val createProductsRequestEntity = CreateProductRequestEntity(createProduct.title, createProduct.description, createProduct.price.toDouble())
         productsApi.createProducts(createProductsRequestEntity)
     }
 

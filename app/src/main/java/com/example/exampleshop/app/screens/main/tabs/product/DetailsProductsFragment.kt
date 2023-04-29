@@ -35,7 +35,7 @@ class DetailsProductsFragment : BaseFragment<FragmentDetailsProductBinding>(Frag
                     binding.productIdTextView.text = result.value.first().productId
                     binding.titleTextView.text = result.value.first().title
                     binding.descriptionTextView.text = result.value.first().description
-                    binding.priceTextView.text = result.value.first().price.toString()
+                    binding.priceTextView.text = result.value.first().price
                 }
 
                 is Pending -> binding.productDetailProgressBar.visibility = View.VISIBLE

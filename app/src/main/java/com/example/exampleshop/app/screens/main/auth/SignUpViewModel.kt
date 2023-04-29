@@ -5,11 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.exampleshop.R
 import com.example.exampleshop.app.model.AccountAlreadyExistsException
-import com.example.exampleshop.app.model.EmptyFieldException
-import com.example.exampleshop.app.model.Field
+import com.example.exampleshop.app.model.EmptySignUpFieldException
 import com.example.exampleshop.app.model.PasswordMismatchException
 import com.example.exampleshop.app.model.accounts.AccountsRepository
 import com.example.exampleshop.app.model.accounts.entities.SignUpData
+import com.example.exampleshop.app.model.field.SignUpField
 import com.example.exampleshop.app.screens.base.BaseViewModel
 import com.example.exampleshop.app.utils.MutableLiveEvent
 import com.example.exampleshop.app.utils.MutableUnitLiveEvent
@@ -43,7 +43,7 @@ class SignUpViewModel @Inject constructor(
                 accountsRepository.signUp(signUpData)
                 showSuccessSignUpMessage()
                 goBack()
-            } catch (e: EmptyFieldException) {
+            } catch (e: EmptySignUpFieldException) {
                 processEmptyFieldException(e)
             }catch (e: PasswordMismatchException) {
                 processPasswordMismatchException()
@@ -55,15 +55,15 @@ class SignUpViewModel @Inject constructor(
         }
     }
 
-    private fun processEmptyFieldException(e: EmptyFieldException) {
-        _state.value = when (e.field) {
-            Field.Email -> _state.requireValue()
+    private fun processEmptyFieldException(e: EmptySignUpFieldException) {
+        _state.value = when (e.signUpField) {
+            SignUpField.EMAIL -> _state.requireValue()
                 .copy(emailErrorMessageRes = R.string.field_is_empty)
-            Field.Login -> _state.requireValue()
+            SignUpField.LOGIN -> _state.requireValue()
                 .copy(loginErrorMessageRes = R.string.field_is_empty)
-            Field.UserName -> _state.requireValue()
+            SignUpField.USERNAME -> _state.requireValue()
                 .copy(usernameErrorMessageRes = R.string.field_is_empty)
-            Field.Password -> _state.requireValue()
+            SignUpField.PASSWORD -> _state.requireValue()
                 .copy(passwordErrorMessageRes = R.string.field_is_empty)
         }
     }

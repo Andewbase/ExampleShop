@@ -1,5 +1,9 @@
 package com.example.exampleshop.app.model
 
+import com.example.exampleshop.app.model.field.ProductField
+import com.example.exampleshop.app.model.field.SignInField
+import com.example.exampleshop.app.model.field.SignUpField
+
 
 open class AppException : RuntimeException {
     constructor() : super()
@@ -7,9 +11,18 @@ open class AppException : RuntimeException {
     constructor(cause: Throwable) : super(cause)
 }
 
-class EmptyFieldException(
-    val field: Field
+class EmptySignUpFieldException(
+    val signUpField: SignUpField
 ) : AppException()
+
+class EmptySignInException(
+    val signInField: SignInField
+): AppException()
+
+class EmptyProductException(
+    val productField: ProductField
+): AppException()
+
 
 class PasswordMismatchException : AppException()
 

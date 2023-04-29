@@ -3,10 +3,11 @@ package com.example.exampleshop.app.screens.main.auth
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.exampleshop.R
-import com.example.exampleshop.app.model.EmptyFieldException
-import com.example.exampleshop.app.model.Field
+import com.example.exampleshop.app.model.EmptySignInException
 import com.example.exampleshop.app.model.InvalidCredentialsException
 import com.example.exampleshop.app.model.accounts.AccountsRepository
+import com.example.exampleshop.app.model.accounts.entities.SignInData
+import com.example.exampleshop.app.model.field.SignInField
 import com.example.exampleshop.app.screens.base.BaseViewModel
 import com.example.exampleshop.app.utils.MutableLiveEvent
 import com.example.exampleshop.app.utils.MutableUnitLiveEvent
@@ -36,13 +37,13 @@ class SignInViewModel @Inject constructor(
     private val _navigateToTabsEvent = MutableUnitLiveEvent()
     val navigateToTabsEvent = _navigateToTabsEvent.share()
 
-    fun signIn(login: String, password: String) {
+    fun signIn(signInData: SignInData) {
         viewModelScope.launch {
             showProgress()
             try {
-                accountsRepository.signIn(login, password)
+                accountsRepository.signIn(signInData)
                 launchTabsScreen()
-            } catch (e: EmptyFieldException) {
+            } catch (e: EmptySignInException) {
                 processEmptyFieldException(e)
             } catch (e: InvalidCredentialsException) {
                 processInvalidCredentialsException()
@@ -53,10 +54,10 @@ class SignInViewModel @Inject constructor(
         }
     }
 
-    private fun processEmptyFieldException(e: EmptyFieldException) {
+    private fun processEmptyFieldException(e: EmptySignInException) {
         _state.value = _state.requireValue().copy(
-            emptyLoginError = e.field == Field.Login,
-            emptyPasswordError = e.field == Field.Password
+            emptyLoginError = e.signInField == SignInField.LOGIN,
+            emptyPasswordError = e.signInField == SignInField.PASSWORD
         )
     }
 

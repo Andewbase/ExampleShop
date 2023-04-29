@@ -12,6 +12,6 @@ data class ProductEntity(
        productId = productId,
        title = title,
        description = description,
-       price = price
+       price = price.toString()
    )
 }
