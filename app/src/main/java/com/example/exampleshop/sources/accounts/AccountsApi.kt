@@ -4,9 +4,11 @@ import com.example.exampleshop.sources.accounts.entities.GetAccountResponseEntit
 import com.example.exampleshop.sources.accounts.entities.SignInRequestEntity
 import com.example.exampleshop.sources.accounts.entities.SignInResponseEntity
 import com.example.exampleshop.sources.accounts.entities.SignUpRequestEntity
+import com.example.exampleshop.sources.accounts.entities.UpdateUsernameRequestEntity
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.PUT
 
 interface AccountsApi {
 
@@ -18,4 +20,7 @@ interface AccountsApi {
 
     @GET("me")
     suspend fun getAccount(): GetAccountResponseEntity
+
+    @PUT("me")
+    suspend fun setUserName(@Body updateUsernameRequestEntity: UpdateUsernameRequestEntity)
 }

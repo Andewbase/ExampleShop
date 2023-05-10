@@ -11,4 +11,6 @@ interface AccountsSource {
     suspend fun signUp(signUpData: SignUpData)
 
     suspend fun getAccount(): Account
+
+    suspend fun setUserName(userName: String)
 }

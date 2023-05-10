@@ -6,6 +6,7 @@ import com.example.exampleshop.app.model.accounts.entities.SignInData
 import com.example.exampleshop.app.model.accounts.entities.SignUpData
 import com.example.exampleshop.sources.accounts.entities.SignInRequestEntity
 import com.example.exampleshop.sources.accounts.entities.SignUpRequestEntity
+import com.example.exampleshop.sources.accounts.entities.UpdateUsernameRequestEntity
 import com.example.exampleshop.sources.base.BaseRetrofitSource
 import com.example.exampleshop.sources.base.RetrofitConfig
 import javax.inject.Inject
@@ -30,6 +31,11 @@ class RetrofitAccountsSource @Inject constructor(
 
     override suspend fun getAccount(): Account = wrapRetrofitExceptions {
         accountsApi.getAccount().toAccount()
+    }
+
+    override suspend fun setUserName(userName: String) = wrapRetrofitExceptions {
+        val updateUsernameRequestEntity = UpdateUsernameRequestEntity(userName)
+        accountsApi.setUserName(updateUsernameRequestEntity)
     }
 
 }

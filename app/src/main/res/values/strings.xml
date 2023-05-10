@@ -28,4 +28,7 @@
     <string name="profile">Аккаунт</string>
     <string name="action_edit_profile">Редактировать профиль</string>
     <string name="action_logout">Выход из аккаунта</string>
+    <string name="edit_profile_description">Прямо сейчас вы можете редактировать только имя пользователя</string>
+    <string name="action_save">Сохранить</string>
+    <string name="action_cancel">Отмена</string>
 </resources>

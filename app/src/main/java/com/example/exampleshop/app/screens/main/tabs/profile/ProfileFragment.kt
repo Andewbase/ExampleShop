@@ -5,11 +5,13 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import com.example.exampleshop.R
 import com.example.exampleshop.app.model.Empty
 import com.example.exampleshop.app.model.Error
 import com.example.exampleshop.app.model.Pending
 import com.example.exampleshop.app.model.Success
 import com.example.exampleshop.app.screens.base.BaseFragment
+import com.example.exampleshop.app.utils.findTopNavController
 import com.example.exampleshop.databinding.FragmentProfileBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -24,6 +26,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
         observeAccountDetails()
 
         binding.logoutButton.setOnClickListener { logout() }
+        binding.editProfileButton.setOnClickListener { onEditProfileButtonPressed() }
     }
 
     private fun observeAccountDetails() {
@@ -39,6 +42,10 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
                 is Error -> Toast.makeText(requireActivity(), "Ошибка", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun onEditProfileButtonPressed() {
+        findTopNavController().navigate(R.id.editProfileFragment)
     }
 
 }

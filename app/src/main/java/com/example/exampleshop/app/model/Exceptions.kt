@@ -1,6 +1,7 @@
 package com.example.exampleshop.app.model
 
 import com.example.exampleshop.app.model.field.ProductField
+import com.example.exampleshop.app.model.field.SetUserNameField
 import com.example.exampleshop.app.model.field.SignInField
 import com.example.exampleshop.app.model.field.SignUpField
 
@@ -17,6 +18,10 @@ class EmptySignUpFieldException(
 
 class EmptySignInException(
     val signInField: SignInField
+): AppException()
+
+class EmptySetUserNameExceptions(
+    val setUserNameField: SetUserNameField
 ): AppException()
 
 class EmptyProductException(

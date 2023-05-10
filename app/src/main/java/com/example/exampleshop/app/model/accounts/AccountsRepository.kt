@@ -4,11 +4,13 @@ import com.example.exampleshop.app.AdminConst.ADMIN_TOKEN
 import com.example.exampleshop.app.model.AccountAlreadyExistsException
 import com.example.exampleshop.app.model.AuthException
 import com.example.exampleshop.app.model.BackendException
+import com.example.exampleshop.app.model.EmptySetUserNameExceptions
 import com.example.exampleshop.app.model.InvalidCredentialsException
 import com.example.exampleshop.app.model.Result
 import com.example.exampleshop.app.model.accounts.entities.Account
 import com.example.exampleshop.app.model.accounts.entities.SignInData
 import com.example.exampleshop.app.model.accounts.entities.SignUpData
+import com.example.exampleshop.app.model.field.SetUserNameField
 import com.example.exampleshop.app.model.settings.AppSettings
 import com.example.exampleshop.app.model.wrapBackendExceptions
 import com.example.exampleshop.app.utils.async.LazyFlowSubject
@@ -65,6 +67,13 @@ class AccountsRepository @Inject constructor(
 
     fun getAccount(): Flow<Result<Account>> {
         return accountLazyFlowSubject.listen(Unit)
+    }
+
+    suspend fun updateAccountUsername(newUserName: String) = wrapBackendExceptions {
+        if (newUserName.isBlank()) throw EmptySetUserNameExceptions(SetUserNameField.NEWUSERNAME)
+
+        accountsSource.setUserName(newUserName)
+        accountLazyFlowSubject.updateAllValues(accountsSource.getAccount())
     }
 
     fun logout() {
