@@ -3,44 +3,38 @@ package com.example.exampleshop.app.screens.main.tabs.profile
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.example.exampleshop.R
-import com.example.exampleshop.app.model.Empty
-import com.example.exampleshop.app.model.Error
-import com.example.exampleshop.app.model.Pending
-import com.example.exampleshop.app.model.Success
 import com.example.exampleshop.app.screens.base.BaseFragment
 import com.example.exampleshop.app.utils.findTopNavController
+import com.example.exampleshop.app.utils.observeResults
 import com.example.exampleshop.databinding.FragmentProfileBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBinding::inflate) {
+class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
+
+    private lateinit var binding: FragmentProfileBinding
 
     override val viewModel by viewModels<ProfileViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding = FragmentProfileBinding.bind(view)
 
-        observeAccountDetails()
+
 
         binding.logoutButton.setOnClickListener { logout() }
         binding.editProfileButton.setOnClickListener { onEditProfileButtonPressed() }
+        binding.resultView.setTryAgainAction { viewModel.reload() }
+
+        observeAccountDetails()
     }
 
     private fun observeAccountDetails() {
-        viewModel.account.observe(viewLifecycleOwner){result ->
-            when(result){
-                is Success -> {
-                    binding.profileProgressBar.visibility = View.INVISIBLE
-                    binding.emailTextView.text = result.value.email
-                    binding.usernameTextView.text = result.value.username
-                }
-                is Pending -> binding.profileProgressBar.visibility = View.VISIBLE
-                is Empty -> Toast.makeText(requireContext(), "Пусто", Toast.LENGTH_SHORT).show()
-                is Error -> Toast.makeText(requireActivity(), "Ошибка", Toast.LENGTH_SHORT).show()
-            }
+        viewModel.account.observeResults(this, binding.root, binding.resultView){ account ->
+            binding.emailTextView.text = account.email
+            binding.usernameTextView.text = account.username
         }
     }
 

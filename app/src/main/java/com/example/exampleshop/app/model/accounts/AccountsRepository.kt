@@ -16,7 +16,9 @@ import com.example.exampleshop.app.model.wrapBackendExceptions
 import com.example.exampleshop.app.utils.async.LazyFlowSubject
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class AccountsRepository @Inject constructor(
     private val accountsSource: AccountsSource,
     private val appSettings: AppSettings
@@ -63,6 +65,10 @@ class AccountsRepository @Inject constructor(
             if (e.code == 409) throw AccountAlreadyExistsException(e)
             else throw e
         }
+    }
+
+    fun reloadAccount() {
+        accountLazyFlowSubject.reloadAll()
     }
 
     fun getAccount(): Flow<Result<Account>> {

@@ -5,18 +5,22 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.exampleshop.R
 import com.example.exampleshop.app.screens.base.BaseFragment
 import com.example.exampleshop.app.utils.observeEvent
 import com.example.exampleshop.databinding.FragmentEditProfileBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>(FragmentEditProfileBinding::inflate) {
+class EditProfileFragment : BaseFragment(R.layout.fragment_edit_profile) {
+
+    private lateinit var binding: FragmentEditProfileBinding
 
     override val viewModel by viewModels<EditProfileViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding = FragmentEditProfileBinding.bind(view)
 
         binding.saveButton.setOnClickListener { onSaveButtonPressed() }
         binding.cancelButton.setOnClickListener { onCancelButtonPressed() }

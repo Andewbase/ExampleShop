@@ -13,11 +13,14 @@ import com.example.exampleshop.databinding.FragmentSignInBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SignInFragment : BaseFragment<FragmentSignInBinding>(FragmentSignInBinding::inflate) {
+class SignInFragment : BaseFragment(R.layout.fragment_sign_in) {
 
     override val viewModel by viewModels<SignInViewModel>()
+
+    private lateinit var binding: FragmentSignInBinding
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding = FragmentSignInBinding.bind(view)
 
         binding.signInButton.setOnClickListener { onSignInButtonPressed() }
         binding.signUpButton.setOnClickListener { onSignUpButtonPressed() }

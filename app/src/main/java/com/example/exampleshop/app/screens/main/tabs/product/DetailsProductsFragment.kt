@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import com.example.exampleshop.R
 import com.example.exampleshop.app.model.Empty
 import com.example.exampleshop.app.model.Error
 import com.example.exampleshop.app.model.Pending
@@ -14,7 +15,9 @@ import com.example.exampleshop.databinding.FragmentDetailsProductBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DetailsProductsFragment : BaseFragment<FragmentDetailsProductBinding>(FragmentDetailsProductBinding::inflate) {
+class DetailsProductsFragment : BaseFragment(R.layout.fragment_details_product) {
+
+    private lateinit var binding: FragmentDetailsProductBinding
 
     override val viewModel by viewModels<DetailProductViewModel>()
 
@@ -22,6 +25,7 @@ class DetailsProductsFragment : BaseFragment<FragmentDetailsProductBinding>(Frag
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding = FragmentDetailsProductBinding.bind(view)
 
         val nameProduct = safeArgs.nameProduct
 

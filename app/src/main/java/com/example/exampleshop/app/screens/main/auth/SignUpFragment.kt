@@ -8,6 +8,7 @@ import androidx.annotation.StringRes
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.exampleshop.R
 import com.example.exampleshop.app.model.accounts.entities.SignUpData
 import com.example.exampleshop.app.screens.base.BaseFragment
 import com.example.exampleshop.app.utils.observeEvent
@@ -16,7 +17,9 @@ import com.google.android.material.textfield.TextInputLayout
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SignUpFragment : BaseFragment<FragmentSignUpBinding>(FragmentSignUpBinding::inflate) {
+class SignUpFragment : BaseFragment(R.layout.fragment_sign_up) {
+
+    private lateinit var binding: FragmentSignUpBinding
 
     override val viewModel by viewModels<SignUpViewModel>()
 
@@ -24,6 +27,7 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>(FragmentSignUpBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding = FragmentSignUpBinding.bind(view)
 
         binding.createAccountButton.setOnClickListener { onCreateAccountButtonPressed() }
 

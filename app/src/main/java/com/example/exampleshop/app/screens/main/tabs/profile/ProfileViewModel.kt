@@ -29,4 +29,8 @@ class ProfileViewModel @Inject constructor(
         }
     }
 
+    fun reload() {
+        accountsRepository.reloadAccount()
+    }
+
 }

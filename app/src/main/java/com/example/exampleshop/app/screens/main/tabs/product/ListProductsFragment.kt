@@ -18,7 +18,9 @@ import com.example.exampleshop.databinding.FragmentProductListBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ListProductsFragment : BaseFragment<FragmentProductListBinding>(FragmentProductListBinding::inflate) {
+class ListProductsFragment : BaseFragment(R.layout.fragment_product_list) {
+
+    private lateinit var binding: FragmentProductListBinding
 
     override val viewModel by viewModels<ListProductViewModel>()
 
@@ -26,6 +28,7 @@ class ListProductsFragment : BaseFragment<FragmentProductListBinding>(FragmentPr
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding = FragmentProductListBinding.bind(view)
 
         binding.recyclerviewProducts.adapter = adapter
 

@@ -83,12 +83,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:text="@string/action_logout"/>
 
-        <ProgressBar
-            android:id="@+id/profileProgressBar"
-            android:layout_width="wrap_content"
+        <com.example.exampleshop.app.view.ResultView
+            android:id="@+id/resultView"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:visibility="invisible"
-            tools:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
