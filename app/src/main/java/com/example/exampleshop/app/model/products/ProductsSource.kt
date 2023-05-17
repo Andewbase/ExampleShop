@@ -10,6 +10,4 @@ interface ProductsSource {
     suspend fun searchProducts(searchQuery: String): List<Product>
 
     suspend fun getAllProducts(): List<Product>
-
-    suspend fun getProduct(searchQuery: String): List<Product>
 }

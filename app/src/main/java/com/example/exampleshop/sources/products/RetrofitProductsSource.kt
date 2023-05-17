@@ -34,13 +34,4 @@ class RetrofitProductsSource @Inject constructor(
            productEntity.toProduct()
        }
     }
-
-    override suspend fun getProduct(searchQuery: String): List<Product> = wrapRetrofitExceptions {
-        val fetchProductRequest = FetchProductRequest(searchQuery = searchQuery)
-        productsApi.getProduct(fetchProductRequest).map {
-            it.toProduct()
-        }
-    }
-
-
 }

@@ -18,6 +18,4 @@ interface ProductsApi {
     @GET("products")
     suspend fun getAllProducts(): List<ProductEntity>
 
-    @POST("products/product")
-    suspend fun getProduct(@Body body: FetchProductRequest): List<ProductEntity>
 }
