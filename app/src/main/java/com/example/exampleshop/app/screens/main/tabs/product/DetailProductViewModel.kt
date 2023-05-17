@@ -28,7 +28,7 @@ class DetailProductViewModel @Inject constructor(
 
     fun getProduct(nameProduct: String){
         viewModelScope.launch {
-            repository.getProduct(nameProduct).collect{
+            repository.searchProduct(nameProduct).collect{
                 if (it is Success){
                     _product.value = it
                 }else if (it is Error){
