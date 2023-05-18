@@ -7,6 +7,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".app.screens.main.tabs.product.ListProductsFragment">
 
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchViewProducts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/add_search_product"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerviewProducts"
         android:layout_width="match_parent"
@@ -17,7 +26,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchViewProducts"
         tools:itemCount="4"
         tools:listitem="@layout/item_product" />
 

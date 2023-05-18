@@ -4,6 +4,7 @@ package com.example.exampleshop.app.screens.main.tabs.product
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.exampleshop.R
@@ -29,6 +30,8 @@ class ListProductsFragment : BaseFragment(R.layout.fragment_product_list) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentProductListBinding.bind(view)
+
+        searchResult()
 
         binding.recyclerviewProducts.adapter = adapter
 
@@ -70,6 +73,26 @@ class ListProductsFragment : BaseFragment(R.layout.fragment_product_list) {
         binding.addProductButton.setOnClickListener { findNavController().navigate(goCreateDialog()) }
     }
 
+    private fun searchResult(){
+        binding.searchViewProducts.setOnQueryTextListener(object : OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                if (query!!.isBlank() || query == QUERY_EMPTY){
+                    viewModel.searchProduct(QUERY_EMPTY)
+                }else{
+                    viewModel.searchProduct(query)
+                    binding.searchViewProducts.clearFocus()
+                }
+
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean = true
+        })
+    }
     private fun goCreateDialog() = R.id.action_listProductsFragment_to_createProductDialogFragment2
+
+    private companion object{
+        const val QUERY_EMPTY = ""
+    }
 
 }

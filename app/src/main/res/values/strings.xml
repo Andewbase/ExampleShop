@@ -31,4 +31,5 @@
     <string name="edit_profile_description">Прямо сейчас вы можете редактировать только имя пользователя</string>
     <string name="action_save">Сохранить</string>
     <string name="action_cancel">Отмена</string>
+    <string name="add_search_product">Введти название товара</string>
 </resources>

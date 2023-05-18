@@ -26,10 +26,8 @@ class ListProductViewModel @Inject constructor(
     private var _settings: MutableLiveData<Boolean> = MutableLiveData()
     val settings = _settings.share()
 
-
-
     init {
-        getProducts()
+        searchProduct("")
         checkAccount()
     }
 
@@ -47,15 +45,5 @@ class ListProductViewModel @Inject constructor(
             _settings.value = account
         }
     }
-
-    private fun getProducts(){
-        viewModelScope.launch {
-            productsRepository.getAllProducts().collect{
-                _products.value = it
-            }
-        }
-    }
-
-
 
 }
