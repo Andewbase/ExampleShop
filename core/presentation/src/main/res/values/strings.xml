@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="core_presentation_general_error_title">Ошибка</string>
+    <string name="core_presentation_general_error">Неизвестная внутренняя ошибка</string>
+    <string name="core_presentation_general_error_ok">Ok</string>
+    <string name="core_presentation_try_again">пробовать снова</string>
+    <string name="core_presentation_logout">Выход из системы</string>
+</resources>
