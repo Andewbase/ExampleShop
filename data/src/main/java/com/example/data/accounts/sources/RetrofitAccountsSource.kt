@@ -8,8 +8,9 @@ import com.example.data.accounts.sources.retrofit.entities.SignUpRequestEntity
 import com.example.data.accounts.sources.retrofit.entities.UpdateUsernameRequestEntity
 import com.example.data.retrofit.BaseRetrofitSource
 import com.example.data.retrofit.RetrofitConfig
+import javax.inject.Inject
 
-class RetrofitAccountsSource(
+class RetrofitAccountsSource @Inject constructor(
     config: RetrofitConfig
 ): BaseRetrofitSource(config), AccountsDataSource {
 
@@ -29,8 +30,8 @@ class RetrofitAccountsSource(
         accountsApi.getAccount().toAccountDataEntity()
     }
 
-    override suspend fun setAccountUsername(username: String): String = wrapRetrofitExceptions {
+    override suspend fun setAccountUsername(username: String): AccountDataEntity = wrapRetrofitExceptions {
         val updateUsernameRequestEntity = UpdateUsernameRequestEntity(username)
-        accountsApi.setUserName(updateUsernameRequestEntity)
+        accountsApi.setUserName(updateUsernameRequestEntity).toAccountDataEntity()
     }
 }

@@ -11,5 +11,5 @@ interface AccountsDataSource {
 
     suspend fun getAccount(): AccountDataEntity
 
-    suspend fun setAccountUsername(username: String): String
+    suspend fun setAccountUsername(username: String): AccountDataEntity
 }

@@ -21,5 +21,5 @@ interface AccountsApi {
     suspend fun getAccount(): GetAccountResponseEntity
 
     @PUT("me")
-    suspend fun setUserName(@Body updateUsernameRequestEntity: UpdateUsernameRequestEntity): String
+    suspend fun setUserName(@Body updateUsernameRequestEntity: UpdateUsernameRequestEntity): GetAccountResponseEntity
 }
