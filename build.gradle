@@ -48,6 +48,7 @@ buildscript {
 
         Modules = [
                 Wiring: ":wiring",
+                Navigation: ":navigation",
                 Data: ":data",
                 Core: [
                         Common: ":core:common",
