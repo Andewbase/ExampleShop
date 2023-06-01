@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="signin_empty_login">Поле логин пустое</string>
+    <string name="signin_empty_password">Поле пароль пустое</string>
+    <string name="signin_invalid_login_or_password">Неверный логин или пароль</string>
+
+    <string name="signin_field_login">Логин</string>
+    <string name="signin_field_password">Пароль</string>
+
+    <string name="signin_action_sign_in">Вход</string>
+    <string name="signin_action_create_account">Создать учетную запись</string>
+
+</resources>
