@@ -55,6 +55,11 @@ buildscript {
                         CommonImpl: ":core:common-impl",
                         Presentation: ":core:presentation",
                         Theme: ":core:theme"
+                ],
+                Features: [
+                        SignIn: ":features:sign-in",
+                        SignUp: ":features:sign-up",
+                        Profile: ":features:profile"
                 ]
         ]
     }
