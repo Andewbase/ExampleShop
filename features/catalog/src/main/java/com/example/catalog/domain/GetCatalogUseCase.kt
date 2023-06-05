@@ -39,6 +39,10 @@ class GetCatalogUseCase @Inject constructor(
         }
     }
 
+    fun isAdmin(): Boolean{
+       return productsRepository.isAmdin()
+    }
+
 
     private companion object{
         const val QUERY_EMPTY = ""

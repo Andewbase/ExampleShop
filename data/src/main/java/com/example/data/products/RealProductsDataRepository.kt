@@ -3,6 +3,7 @@ package com.example.data.products
 import com.example.core.Container
 import com.example.core.entities.OnChange
 import com.example.core.flow.LazyFlowSubjectFactory
+import com.example.data.AccountsDataRepository
 import com.example.data.ProductsDataRepository
 import com.example.data.products.entities.CreateProduct
 import com.example.data.products.entities.Product
@@ -13,6 +14,7 @@ import kotlinx.coroutines.flow.flatMapLatest
 import javax.inject.Inject
 
 class RealProductsDataRepository @Inject constructor(
+    private val accountsDataRepository: AccountsDataRepository,
     private val productsDataSource: ProductsDataSource,
     private val lazyFlowSubjectFactory: LazyFlowSubjectFactory
 ): ProductsDataRepository {
@@ -21,6 +23,10 @@ class RealProductsDataRepository @Inject constructor(
 
     override suspend fun createProduct(createProduct: CreateProduct) {
         productsDataSource.createProduct(createProduct)
+    }
+
+    override fun getCurrentIsAdmin(): Boolean {
+       return accountsDataRepository.isAdmin()
     }
 
     override fun searchProduct(product: String): Flow<Container<List<Product>>> {

@@ -4,6 +4,7 @@ import com.example.core.AuthException
 import com.example.core.Container
 import com.example.core.flow.LazyFlowSubjectFactory
 import com.example.data.AccountsDataRepository
+import com.example.data.accounts.AdminConst.ADMIN_TOKEN
 import com.example.data.accounts.entities.AccountDataEntity
 import com.example.data.accounts.entities.SignUpDataEntity
 import com.example.data.accounts.sources.AccountsDataSource
@@ -51,6 +52,10 @@ class RealAccountsDataRepository @Inject constructor(
 
     override suspend fun signUp(signUpData: SignUpDataEntity) {
         accountsDataSource.signUp(signUpData)
+    }
+
+    override fun isAdmin(): Boolean {
+        return settingsDataSource.getToken() == ADMIN_TOKEN
     }
 
     override fun reload() {

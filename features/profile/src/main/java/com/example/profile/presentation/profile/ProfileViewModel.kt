@@ -13,7 +13,7 @@ import javax.inject.Inject
 class ProfileViewModel @Inject constructor(
     private val getProfileUseCase: GetProfileUseCase,
     private val logoutUseCase: LogoutUseCase,
-    private val router: ProfileRouter,
+    private val router: ProfileRouter
 ) : BaseViewModel() {
 
     val profileLiveValue = getProfileUseCase.getProfile()

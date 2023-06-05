@@ -9,6 +9,8 @@ interface ProductsDataRepository {
 
     suspend fun  createProduct(createProduct: CreateProduct)
 
+    fun getCurrentIsAdmin(): Boolean
+
     fun searchProduct(product: String): Flow<Container<List<Product>>>
 
 }

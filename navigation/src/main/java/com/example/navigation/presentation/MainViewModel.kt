@@ -10,10 +10,15 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val getCurrentUsernameUseCase: GetCurrentUsernameUseCase
+    private val getCurrentUsernameUseCase: GetCurrentUsernameUseCase,
+
 ): BaseViewModel() {
 
     val usernameLiveValue = liveValue<String?>()
+
+    init {
+        observeUsername()
+    }
 
     private fun observeUsername() {
         viewModelScope.launch {

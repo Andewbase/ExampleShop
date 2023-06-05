@@ -15,5 +15,7 @@ interface AccountsDataRepository {
 
     suspend fun signUp(signUpData: SignUpDataEntity)
 
+    fun isAdmin(): Boolean
+
     fun reload()
 }

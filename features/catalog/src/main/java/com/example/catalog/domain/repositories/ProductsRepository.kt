@@ -9,6 +9,8 @@ interface ProductsRepository {
 
     suspend fun  createProduct(createProduct: CreateProduct)
 
+    fun isAmdin(): Boolean
+
     fun searchProduct(product: String): Flow<Container<List<Product>>>
 
     fun getProductId(id: String): Flow<Container<Product>>

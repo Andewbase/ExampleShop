@@ -24,10 +24,6 @@ class ProductsRepository @Inject constructor(
 
     private var accountResult: Result<Account> = Empty()
 
-    private val productsLazyFlowSubject = LazyFlowSubject<Unit, List<Product>>{
-        wrapBackendExceptions { productsSource.getAllProducts() }
-    }
-
     private val productLazyFlowSubject = LazyFlowSubject<String, List<Product>>{ nameProduct ->
         wrapBackendExceptions { productsSource.searchProducts(nameProduct) }
     }
