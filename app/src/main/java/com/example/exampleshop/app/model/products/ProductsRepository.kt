@@ -48,8 +48,4 @@ class ProductsRepository @Inject constructor(
             }
         }
     }
-
-    fun getAllProducts(): Flow<Result<List<Product>>> {
-       return productsLazyFlowSubject.listen(Unit)
-    }
 }

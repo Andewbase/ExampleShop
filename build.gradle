@@ -59,7 +59,8 @@ buildscript {
                 Features: [
                         SignIn: ":features:sign-in",
                         SignUp: ":features:sign-up",
-                        Profile: ":features:profile"
+                        Profile: ":features:profile",
+                        Catalog: ":features:catalog"
                 ]
         ]
     }

@@ -3,9 +3,9 @@ package com.example.sign_in.presentation.signin
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isInvisible
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.core.widget.addTextChangedListener
 import com.example.presentation.viewBinding
 import com.example.presentation.views.observe
 import com.example.sign_in.R

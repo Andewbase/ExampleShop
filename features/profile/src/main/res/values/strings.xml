@@ -1,0 +1,11 @@
+<resources>
+    <string name="profile_title_hint">Информация о профиле</string>
+    <string name="action_edit_profile">Редактировать профиль</string>
+    <string name="field_email">E-mail</string>
+    <string name="action_logout">Выход из аккаунта</string>
+    <string name="action_save">Сохранить</string>
+    <string name="action_cancel">Отмена</string>
+    <string name="field_user_name">Имя пользователя</string>
+    <string name="edit_profile_description">Прямо сейчас вы можете редактировать только имя пользователя</string>
+    <string name="profile_empty_username">Имя пользователя не должно быть пустым</string>
+</resources>

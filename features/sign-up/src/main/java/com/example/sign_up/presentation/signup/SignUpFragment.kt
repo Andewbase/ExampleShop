@@ -4,14 +4,14 @@ import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import androidx.core.view.isInvisible
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import com.example.presentation.BaseScreen
 import com.example.presentation.args
+import com.example.presentation.live.observeEvent
 import com.example.presentation.viewBinding
 import com.example.presentation.viewModelCreator
 import com.example.sign_up.R
-import androidx.core.widget.addTextChangedListener
-import com.example.presentation.live.observeEvent
 import com.example.sign_up.databinding.FragmentSignUpBinding
 import com.example.sign_up.domain.entities.SignUpData
 import com.example.sign_up.domain.entities.SignUpField
