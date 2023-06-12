@@ -6,7 +6,7 @@ import com.example.core.flow.LazyFlowSubjectFactory
 import com.example.data.AccountsDataRepository
 import com.example.data.ProductsDataRepository
 import com.example.data.products.entities.CreateProduct
-import com.example.data.products.entities.Product
+import com.example.data.products.entities.ProductDataEntity
 import com.example.data.products.sources.ProductsDataSource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -25,11 +25,15 @@ class RealProductsDataRepository @Inject constructor(
         productsDataSource.createProduct(createProduct)
     }
 
+    override suspend fun getProductById(id: String): ProductDataEntity {
+        return productsDataSource.getProductById(id)
+    }
+
     override fun getCurrentIsAdmin(): Boolean {
        return accountsDataRepository.isAdmin()
     }
 
-    override fun searchProduct(product: String): Flow<Container<List<Product>>> {
+    override fun searchProduct(product: String): Flow<Container<List<ProductDataEntity>>> {
         return updateNotifierFlow.flatMapLatest {
             lazyFlowSubjectFactory.create{
                 productsDataSource.searchProducts(product)

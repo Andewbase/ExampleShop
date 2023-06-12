@@ -2,5 +2,8 @@
 
     <string name="add_product">Добавить товар</string>
     <string name="add_search_product">Введти название товара</string>
+    <string name="name_product">Название продукта</string>
+    <string name="description_product">Описание продукта</string>
+    <string name="price_product">Цена</string>
 
 </resources>

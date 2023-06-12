@@ -1,7 +1,7 @@
 package com.example.data.products.sources
 
 import com.example.data.products.entities.CreateProduct
-import com.example.data.products.entities.Product
+import com.example.data.products.entities.ProductDataEntity
 import com.example.data.products.sources.retrofit.ProductsApi
 import com.example.data.products.sources.retrofit.entities.CreateProductRequestEntity
 import com.example.data.products.sources.retrofit.entities.FetchProductRequest
@@ -21,14 +21,18 @@ class RetrofitProductsSource @Inject constructor(
         productsApi.createProducts(createProductsRequestEntity)
     }
 
-    override suspend fun searchProducts(searchQuery: String): List<Product> = wrapRetrofitExceptions {
+    override suspend fun getProductById(id: String): ProductDataEntity {
+        //TODO#1 productsApi.get(id)
+    }
+
+    override suspend fun searchProducts(searchQuery: String): List<ProductDataEntity> = wrapRetrofitExceptions {
         val fetchProductRequest = FetchProductRequest(searchQuery = searchQuery)
         productsApi.searchProducts(fetchProductRequest).map {
             it.toProduct()
         }
     }
 
-    override suspend fun getAllProducts(): List<Product> = wrapRetrofitExceptions {
+    override suspend fun getAllProducts(): List<ProductDataEntity> = wrapRetrofitExceptions {
         productsApi.getAllProducts().map { productEntity ->
             productEntity.toProduct()
         }

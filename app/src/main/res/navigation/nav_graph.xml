@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/signInFragment">
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.example.sign_in.presentation.signin.SignInFragment"
+        android:label="SignInFragment" />
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.example.sign_up.presentation.signup.SignUpFragment"
+        android:label="SignUpFragment" />
+    <fragment
+        android:id="@+id/tabsFragment"
+        android:name="com.example.navigation.presentation.tabs.TabsFragment"
+        android:label="TabsFragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.profile.presentation.profile.ProfileFragment"
+        android:label="ProfileFragment" />
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.profile.presentation.edit.EditProfileFragment"
+        android:label="EditProfileFragment" />
+    <fragment
+        android:id="@+id/catalogFragment"
+        android:name="com.example.catalog.presentation.catalog.CatalogFragment"
+        android:label="CatalogFragment" />
+    <fragment
+        android:id="@+id/productDetailsFragment"
+        android:name="com.example.catalog.presentation.details.ProductDetailsFragment"
+        android:label="ProductDetailsFragment" />
+</navigation>

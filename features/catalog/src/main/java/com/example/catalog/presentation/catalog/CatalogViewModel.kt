@@ -20,14 +20,14 @@ class CatalogViewModel @Inject constructor(
     val adminLiveValue = liveValue<Boolean>()
 
     init {
-        observeAmdin()
+        observeAdmin()
     }
 
     fun launchDetails(productItem: ProductItem) = debounce {
         catalogRouter.launchDetails(productItem.productId)
     }
 
-    private fun observeAmdin(){
+    private fun observeAdmin(){
         viewModelScope.launch {
             adminLiveValue.value = getCatalogUseCase.isAdmin()
         }

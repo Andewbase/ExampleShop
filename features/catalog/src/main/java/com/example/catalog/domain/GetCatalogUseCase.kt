@@ -40,7 +40,7 @@ class GetCatalogUseCase @Inject constructor(
     }
 
     fun isAdmin(): Boolean{
-       return productsRepository.isAmdin()
+       return productsRepository.isAdmin()
     }
 
 

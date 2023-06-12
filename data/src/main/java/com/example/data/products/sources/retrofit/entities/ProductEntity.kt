@@ -1,6 +1,6 @@
 package com.example.data.products.sources.retrofit.entities
 
-import com.example.data.products.entities.Product
+import com.example.data.products.entities.ProductDataEntity
 
 data class ProductEntity(
     val productId: String,
@@ -8,7 +8,7 @@ data class ProductEntity(
     val description: String,
     val price: Double
 ){
-   fun toProduct(): Product = Product(
+   fun toProduct(): ProductDataEntity = ProductDataEntity(
        productId = productId,
        title = title,
        description = description,

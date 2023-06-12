@@ -14,7 +14,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navOptions
 import com.example.navigation.DestinationsProvider
-import com.example.navigation.presentation.TabsFragment
+import com.example.navigation.presentation.tabs.TabsFragment
 import com.example.presentation.ARG_SCREEN
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
