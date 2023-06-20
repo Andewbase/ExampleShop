@@ -9,7 +9,7 @@ interface ProductsDataRepository {
 
     suspend fun  createProduct(createProduct: CreateProduct)
 
-    suspend fun getProductById(id: String): ProductDataEntity
+    fun getProductById(id: String): Flow<Container<ProductDataEntity>>
 
     fun getCurrentIsAdmin(): Boolean
 

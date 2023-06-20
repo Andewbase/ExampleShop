@@ -21,12 +21,14 @@ class RealProductsDataRepository @Inject constructor(
 
     private val updateNotifierFlow = MutableStateFlow(OnChange(Unit))
 
+
+
     override suspend fun createProduct(createProduct: CreateProduct) {
         productsDataSource.createProduct(createProduct)
     }
 
-    override suspend fun getProductById(id: String): ProductDataEntity {
-        return productsDataSource.getProductById(id)
+    override fun getProductById(id: String): Flow<Container<ProductDataEntity>> {
+        return lazyFlowSubjectFactory.create { productsDataSource.getProductById(id) }.listen()
     }
 
     override fun getCurrentIsAdmin(): Boolean {

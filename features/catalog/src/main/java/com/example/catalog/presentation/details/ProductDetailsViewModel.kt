@@ -16,6 +16,8 @@ class ProductDetailsViewModel @AssistedInject constructor(
 
     val productFlow = getProductDetailsUseCase.getProduct(screen.productId).toLiveValue()
 
+
+
     @AssistedFactory
     interface Factory {
         fun create(screen: Screen): ProductDetailsViewModel
