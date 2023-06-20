@@ -33,7 +33,7 @@ class AdapterProductsRepository @Inject constructor(
         }
     }
 
-    override suspend fun getProductId(id: String): Flow<Container<Product>> {
+    override suspend fun getProductId(id: String): Product {
         val productDataEntity = productsDataRepository.getProductById(id)
         return productMapper.toProduct(productDataEntity)
     }

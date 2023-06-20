@@ -6,6 +6,7 @@ import com.example.data.products.sources.retrofit.entities.ProductEntity
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface ProductsApi {
 
@@ -17,4 +18,7 @@ interface ProductsApi {
 
     @GET("products")
     suspend fun getAllProducts(): List<ProductEntity>
+
+    @GET("products/{id}")
+    suspend fun getProductById(@Path("id") id: String): ProductEntity
 }

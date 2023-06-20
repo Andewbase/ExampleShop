@@ -22,7 +22,8 @@ class RetrofitProductsSource @Inject constructor(
     }
 
     override suspend fun getProductById(id: String): ProductDataEntity {
-        //TODO#1 productsApi.get(id)
+        val idProduct = productsApi.getProductById(id)
+        return idProduct.toProduct()
     }
 
     override suspend fun searchProducts(searchQuery: String): List<ProductDataEntity> = wrapRetrofitExceptions {

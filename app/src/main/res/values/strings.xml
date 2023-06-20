@@ -32,4 +32,6 @@
     <string name="action_save">Сохранить</string>
     <string name="action_cancel">Отмена</string>
     <string name="add_search_product">Введти название товара</string>
+    <string name="tab_catalog">Каталог</string>
+    <string name="tab_profile">Профиль</string>
 </resources>

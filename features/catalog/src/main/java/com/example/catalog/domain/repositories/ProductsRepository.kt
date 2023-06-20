@@ -13,5 +13,5 @@ interface ProductsRepository {
 
     fun searchProduct(product: String): Flow<Container<List<Product>>>
 
-    suspend fun getProductId(id: String): Flow<Container<Product>>
+    suspend fun getProductId(id: String): Product
 }
