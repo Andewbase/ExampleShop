@@ -6,9 +6,8 @@ import com.example.presentation.BaseViewModel
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
-import dagger.hilt.android.lifecycle.HiltViewModel
 
-@HiltViewModel
+
 class ProductDetailsViewModel @AssistedInject constructor(
     @Assisted private val screen: Screen,
     private val getProductDetailsUseCase: GetProductDetailsUseCase

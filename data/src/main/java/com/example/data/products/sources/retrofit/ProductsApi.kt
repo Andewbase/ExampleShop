@@ -19,6 +19,6 @@ interface ProductsApi {
     @GET("products")
     suspend fun getAllProducts(): List<ProductEntity>
 
-    @GET("products/{id}")
+    @GET("product/{id}")
     suspend fun getProductById(@Path("id") id: String): ProductEntity
 }

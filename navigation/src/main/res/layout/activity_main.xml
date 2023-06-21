@@ -14,17 +14,6 @@
         android:background="@color/purple_700"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <FrameLayout
-            android:id="@+id/cartIconContainer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginEnd="16dp"
-            android:visibility="gone"
-            tools:visibility="visible">
-
-        </FrameLayout>
-
         <TextView
             android:id="@+id/usernameTextView"
             android:layout_width="120dp"

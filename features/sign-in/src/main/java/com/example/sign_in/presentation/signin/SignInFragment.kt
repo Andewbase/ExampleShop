@@ -10,7 +10,9 @@ import com.example.presentation.viewBinding
 import com.example.presentation.views.observe
 import com.example.sign_in.R
 import com.example.sign_in.databinding.FragmentSignInBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SignInFragment : Fragment(R.layout.fragment_sign_in) {
 
     private val binding by viewBinding<FragmentSignInBinding>()

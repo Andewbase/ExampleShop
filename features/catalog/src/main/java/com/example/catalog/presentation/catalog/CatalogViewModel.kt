@@ -6,10 +6,12 @@ import com.example.catalog.domain.entities.ProductItem
 import com.example.core.Container
 import com.example.presentation.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
+@ExperimentalCoroutinesApi
 class CatalogViewModel @Inject constructor(
     private val getCatalogUseCase: GetCatalogUseCase,
     private val catalogRouter: CatalogRouter

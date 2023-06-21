@@ -10,7 +10,11 @@ import com.example.catalog.databinding.FragmentCatalogBinding
 import com.example.catalog.domain.entities.ProductItem
 import com.example.core.Container
 import com.example.presentation.viewBinding
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
+@ExperimentalCoroutinesApi
+@AndroidEntryPoint
 class CatalogFragment : Fragment(R.layout.fragment_catalog) {
 
     private val binding by viewBinding<FragmentCatalogBinding>()

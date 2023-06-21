@@ -8,7 +8,9 @@ import com.example.presentation.viewBinding
 import com.example.presentation.views.observe
 import com.example.profile.R
 import com.example.profile.databinding.FragmentProfileBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     private val viewModel by viewModels<ProfileViewModel>()

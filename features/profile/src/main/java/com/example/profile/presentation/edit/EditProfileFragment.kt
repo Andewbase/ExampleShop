@@ -10,7 +10,9 @@ import com.example.presentation.viewBinding
 import com.example.presentation.views.observe
 import com.example.profile.R
 import com.example.profile.databinding.FragmentEditProfileBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class EditProfileFragment : Fragment(R.layout.fragment_edit_profile) {
 
     private val viewModel by viewModels<EditProfileViewModel>()

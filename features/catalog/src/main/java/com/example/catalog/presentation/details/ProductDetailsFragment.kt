@@ -11,8 +11,9 @@ import com.example.presentation.BaseScreen
 import com.example.presentation.args
 import com.example.presentation.viewBinding
 import com.example.presentation.viewModelCreator
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-
+@AndroidEntryPoint
 class ProductDetailsFragment : Fragment(R.layout.fragment_product_details) {
 
     class Screen(
