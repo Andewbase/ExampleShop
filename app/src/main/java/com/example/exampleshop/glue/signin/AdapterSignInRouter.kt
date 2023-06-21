@@ -12,7 +12,7 @@ class AdapterSignInRouter @Inject constructor(
 
     override fun launchSignUp(login: String) {
         val screen = SignUpFragment.Screen(login)
-        globalNavComponentRouter.launch(R.id.signInFragment, screen)
+        globalNavComponentRouter.launch(R.id.signUpFragment, screen)
     }
 
     override fun launchMain() {

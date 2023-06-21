@@ -19,9 +19,7 @@ class AdapterProductsRepository @Inject constructor(
         TODO("Not yet implemented")
     }
 
-    override fun isAdmin(): Boolean {
-        TODO("Not yet implemented")
-    }
+    override fun isAdmin(): Boolean = productsDataRepository.getCurrentIsAdmin()
 
     override fun searchProduct(product: String): Flow<Container<List<Product>>> {
         return productsDataRepository.searchProduct(product).map { container ->
