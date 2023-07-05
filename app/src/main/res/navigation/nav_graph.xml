@@ -31,4 +31,8 @@
         android:id="@+id/productDetailsFragment"
         android:name="com.example.catalog.presentation.details.ProductDetailsFragment"
         android:label="ProductDetailsFragment" />
+    <dialog
+        android:id="@+id/createProductFragmentDialog"
+        android:name="com.example.catalog.presentation.createproduct.CreateProductFragmentDialog"
+        android:label="CreateProductFragmentDialog" />
 </navigation>

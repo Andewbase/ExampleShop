@@ -5,5 +5,10 @@
     <string name="name_product">Название продукта</string>
     <string name="description_product">Описание продукта</string>
     <string name="price_product">Цена</string>
-
+    <string name="cancel">Отмена</string>
+    <string name="create_product">Добавить товар</string>
+    <string name="create_product_title">Меню добавления нового товара</string>
+    <string name="product_already_exists">Продукт уже сушествует в базе</string>
+    <string name="field_is_empty">заполните поле</string>
+    <string name="create_product_success">Вы добавили новый продукт!!!</string>
 </resources>

@@ -17,4 +17,15 @@ class AdapterCatalogRouter @Inject constructor(
         )
     }
 
+    override fun goBack() {
+        globalNavComponentRouter.pop()
+    }
+
+
+    override fun launchCreateProduct() {
+        globalNavComponentRouter.launch(
+            R.id.createProductFragmentDialog
+        )
+    }
+
 }
