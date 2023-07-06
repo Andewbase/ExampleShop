@@ -16,7 +16,7 @@ class AdapterProductsRepository @Inject constructor(
 ): ProductsRepository {
 
     override suspend fun createProduct(createProduct: CreateProduct) {
-        TODO("Not yet implemented")
+        productsDataRepository.createProduct(productMapper.toCreateProduct(createProduct))
     }
 
     override fun isAdmin(): Boolean = productsDataRepository.getCurrentIsAdmin()

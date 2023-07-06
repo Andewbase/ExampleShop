@@ -3,25 +3,22 @@ package com.example.catalog.presentation.createproduct
 import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
-import android.widget.EditText
+import android.view.View
 import androidx.core.view.isInvisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.LifecycleOwner
 import com.example.catalog.R
 import com.example.catalog.databinding.CreateProductDialogBinding
 import com.example.catalog.domain.entities.CreateProduct
 import com.example.catalog.domain.entities.CreateProductField
-import com.example.presentation.live.observeEvent
-import com.example.presentation.viewBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputLayout
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class CreateProductFragmentDialog: DialogFragment() {
-
-    private val binding by viewBinding<CreateProductDialogBinding>()
 
     private val viewModel by viewModels<CreateProductViewModel>()
 
@@ -34,36 +31,26 @@ class CreateProductFragmentDialog: DialogFragment() {
             .setView(R.layout.create_product_dialog)
             .create()
         dialog.setOnShowListener {
+            val view = dialog.findViewById<View>(R.id.dialogRoot)!!
+            val binding = CreateProductDialogBinding.bind(view)
             dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
-                viewModel.createProduct(binding.createProduct())
+                binding.apply {
+                    viewModel.createProduct(createProduct())
+                    setupListeners()
+                }
             }
-            binding.observeState()
-            binding.setupListeners()
+            binding.observeState(dialog)
         }
         return dialog
     }
 
-    private fun observeEvents(savedInstanceState: Bundle?) {
-        if (savedInstanceState == null) {
-
-            viewModel.clearFieldLiveEventValue.observeEvent(viewLifecycleOwner){
-                getEditTextByField(it).text.clear()
-            }
-
-            viewModel.focusFieldLiveEventValue.observeEvent(viewLifecycleOwner) {
-                getEditTextByField(it).requestFocus()
-                getEditTextByField(it).selectAll()
-            }
-        }
-    }
-
-    private fun CreateProductDialogBinding.observeState(){
-        viewModel.stateLiveValue.observe(viewLifecycleOwner) { state ->
-            binding.progressBar.isInvisible = !state.showProgressBar
+    private fun CreateProductDialogBinding.observeState(lifecycleOwner: LifecycleOwner){
+        viewModel.stateLiveValue.observe(lifecycleOwner) { state ->
+            progressBar.isInvisible = !state.showProgressBar
 
             cleanUpErrors()
             if (state.fieldErrorMessage != null){
-                val textInput = getTextInputByField(state.fieldErrorMessage.first)
+                val textInput = getTextInputByField(state.fieldErrorMessage.first, nameProductTextInput, descriptionProductTextInput, priceProductTextInput)
                 textInput.error = state.fieldErrorMessage.second
                 textInput.isErrorEnabled = true
             }
@@ -94,19 +81,16 @@ class CreateProductFragmentDialog: DialogFragment() {
         priceProductTextInput.isErrorEnabled = false
     }
 
-    private fun getEditTextByField(field: CreateProductField): EditText {
+    private fun getTextInputByField(
+        field: CreateProductField,
+        nameProductTextInput: TextInputLayout,
+        descriptionProductTextInput: TextInputLayout,
+        priceProductTextInput: TextInputLayout
+    ): TextInputLayout{
         return when (field){
-            CreateProductField.TITLE -> binding.nameProductEditText
-            CreateProductField.DESCRIPTION -> binding.descriptionProductEditText
-            CreateProductField.PRICE -> binding.priceProductEditText
-        }
-    }
-
-    private fun getTextInputByField(field: CreateProductField): TextInputLayout{
-        return when (field){
-            CreateProductField.TITLE -> binding.nameProductTextInput
-            CreateProductField.DESCRIPTION -> binding.descriptionProductTextInput
-            CreateProductField.PRICE -> binding.priceProductTextInput
+            CreateProductField.TITLE -> nameProductTextInput
+            CreateProductField.DESCRIPTION -> descriptionProductTextInput
+            CreateProductField.PRICE -> priceProductTextInput
         }
     }
 

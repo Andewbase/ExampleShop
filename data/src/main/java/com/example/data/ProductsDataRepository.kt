@@ -1,13 +1,13 @@
 package com.example.data
 
 import com.example.core.Container
-import com.example.data.products.entities.CreateProduct
+import com.example.data.products.entities.CreateProductEntity
 import com.example.data.products.entities.ProductDataEntity
 import kotlinx.coroutines.flow.Flow
 
 interface ProductsDataRepository {
 
-    suspend fun  createProduct(createProduct: CreateProduct)
+    suspend fun  createProduct(createProduct: CreateProductEntity)
 
     fun getProductById(id: String): Flow<Container<ProductDataEntity>>
 

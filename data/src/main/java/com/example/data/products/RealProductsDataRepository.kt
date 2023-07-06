@@ -5,9 +5,10 @@ import com.example.core.entities.OnChange
 import com.example.core.flow.LazyFlowSubjectFactory
 import com.example.data.AccountsDataRepository
 import com.example.data.ProductsDataRepository
-import com.example.data.products.entities.CreateProduct
+import com.example.data.products.entities.CreateProductEntity
 import com.example.data.products.entities.ProductDataEntity
 import com.example.data.products.sources.ProductsDataSource
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.flatMapLatest
@@ -23,7 +24,7 @@ class RealProductsDataRepository @Inject constructor(
 
 
 
-    override suspend fun createProduct(createProduct: CreateProduct) {
+    override suspend fun createProduct(createProduct: CreateProductEntity) {
         productsDataSource.createProduct(createProduct)
     }
 
@@ -35,6 +36,7 @@ class RealProductsDataRepository @Inject constructor(
        return accountsDataRepository.isAdmin()
     }
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     override fun searchProduct(product: String): Flow<Container<List<ProductDataEntity>>> {
         return updateNotifierFlow.flatMapLatest {
             lazyFlowSubjectFactory.create{

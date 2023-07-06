@@ -23,8 +23,7 @@ class CreateProductViewModel @Inject constructor(
     private val isCreateProductInProgressFlow = MutableStateFlow(false)
     private val fieldErrorMessageFlow = MutableStateFlow<Pair<CreateProductField, String>?>(null)
 
-    val focusFieldLiveEventValue = liveEvent<CreateProductField>()
-    val clearFieldLiveEventValue = liveEvent<CreateProductField>()
+    private val focusFieldLiveEventValue = liveEvent<CreateProductField>()
 
     val stateLiveValue = combine(
         isCreateProductInProgressFlow,
@@ -78,10 +77,6 @@ class CreateProductViewModel @Inject constructor(
         focusFieldLiveEventValue.publish(field)
     }
 
-    private fun clearField(field: CreateProductField){
-        clearFieldLiveEventValue.publish(field)
-    }
-
     private fun setFieldError(field: CreateProductField, errorMessage: String){
         fieldErrorMessageFlow.value = field to errorMessage
     }
@@ -91,9 +86,6 @@ class CreateProductViewModel @Inject constructor(
         val fieldErrorMessage: Pair<CreateProductField, String>?
     ){
         val showProgressBar: Boolean get() = createProductInProgress
-
-        val enableCreateProductButton: Boolean get() = !createProductInProgress
-
     }
 
 }

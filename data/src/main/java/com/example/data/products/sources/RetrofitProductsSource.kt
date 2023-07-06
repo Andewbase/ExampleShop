@@ -1,6 +1,6 @@
 package com.example.data.products.sources
 
-import com.example.data.products.entities.CreateProduct
+import com.example.data.products.entities.CreateProductEntity
 import com.example.data.products.entities.ProductDataEntity
 import com.example.data.products.sources.retrofit.ProductsApi
 import com.example.data.products.sources.retrofit.entities.CreateProductRequestEntity
@@ -16,7 +16,7 @@ class RetrofitProductsSource @Inject constructor(
 
     private val productsApi = retrofit.create(ProductsApi::class.java)
 
-    override suspend fun createProduct(createProduct: CreateProduct) {
+    override suspend fun createProduct(createProduct: CreateProductEntity) {
         val createProductsRequestEntity = CreateProductRequestEntity(createProduct.title, createProduct.description, createProduct.price.toDouble())
         productsApi.createProducts(createProductsRequestEntity)
     }

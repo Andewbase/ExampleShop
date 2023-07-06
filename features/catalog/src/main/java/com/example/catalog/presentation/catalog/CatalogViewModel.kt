@@ -29,6 +29,10 @@ class CatalogViewModel @Inject constructor(
         catalogRouter.launchDetails(productItem.productId)
     }
 
+    fun launchCreateProduct() = debounce {
+        catalogRouter.launchCreateProduct()
+    }
+
     private fun observeAdmin(){
         viewModelScope.launch {
             adminLiveValue.value = getCatalogUseCase.isAdmin()

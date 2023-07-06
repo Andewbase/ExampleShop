@@ -43,6 +43,10 @@ class CatalogFragment : Fragment(R.layout.fragment_catalog) {
             }
         }
 
+        binding.addProductButton.setOnClickListener {
+            viewModel.launchCreateProduct()
+        }
+
         adapter.setOnClick(object : CatalogAdapter.OnItemClick{
             override fun onItemClick(productItem: ProductItem) {
                 viewModel.launchDetails(productItem)

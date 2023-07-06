@@ -2,7 +2,7 @@ package com.example.data.products.entities
 
 
 
-data class CreateProduct(
+data class CreateProductEntity(
     val title: String,
     val description: String,
     val price: String
