@@ -17,7 +17,12 @@ class RetrofitProductsSource @Inject constructor(
     private val productsApi = retrofit.create(ProductsApi::class.java)
 
     override suspend fun createProduct(createProduct: CreateProductEntity) {
-        val createProductsRequestEntity = CreateProductRequestEntity(createProduct.title, createProduct.description, createProduct.price.toDouble())
+        val createProductsRequestEntity = CreateProductRequestEntity(
+            createProduct.title,
+            createProduct.description,
+            createProduct.quantity,
+            createProduct.price.toDouble()
+        )
         productsApi.createProducts(createProductsRequestEntity)
     }
 

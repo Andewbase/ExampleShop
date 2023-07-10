@@ -19,7 +19,8 @@ class GetCatalogUseCase @Inject constructor(
                         ProductItem(
                             product.productId,
                             product.title,
-                            product.price
+                            product.price,
+                            product.quantity
                         )
                     }
                 }
@@ -31,7 +32,8 @@ class GetCatalogUseCase @Inject constructor(
                         ProductItem(
                             product.productId,
                             product.title,
-                            product.price
+                            product.price,
+                            product.quantity
                         )
                     }
                 }

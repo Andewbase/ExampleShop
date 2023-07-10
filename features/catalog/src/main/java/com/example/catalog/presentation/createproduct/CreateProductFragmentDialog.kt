@@ -50,7 +50,7 @@ class CreateProductFragmentDialog: DialogFragment() {
 
             cleanUpErrors()
             if (state.fieldErrorMessage != null){
-                val textInput = getTextInputByField(state.fieldErrorMessage.first, nameProductTextInput, descriptionProductTextInput, priceProductTextInput)
+                val textInput = getTextInputByField(state.fieldErrorMessage.first, nameProductTextInput, descriptionProductTextInput, quantityProductTextInput, priceProductTextInput)
                 textInput.error = state.fieldErrorMessage.second
                 textInput.isErrorEnabled = true
             }
@@ -60,6 +60,7 @@ class CreateProductFragmentDialog: DialogFragment() {
     private fun CreateProductDialogBinding.setupListeners(){
         nameProductEditText.addTextChangedListener {viewModel.clearError(CreateProductField.TITLE)}
         descriptionProductEditText.addTextChangedListener { viewModel.clearError(CreateProductField.DESCRIPTION) }
+        quantityProductEditText.addTextChangedListener { viewModel.clearError(CreateProductField.QUANTITY) }
         priceProductEditText.addTextChangedListener { viewModel.clearError(CreateProductField.PRICE) }
     }
 
@@ -68,6 +69,7 @@ class CreateProductFragmentDialog: DialogFragment() {
         return CreateProduct(
             title = nameProductEditText.text.toString(),
             description = descriptionProductEditText.text.toString(),
+            quantity = quantityProductEditText.text.toString(),
             price = priceProductEditText.text.toString()
         )
     }
@@ -75,9 +77,11 @@ class CreateProductFragmentDialog: DialogFragment() {
     private fun CreateProductDialogBinding.cleanUpErrors(){
         nameProductTextInput.error = null
         descriptionProductTextInput.error = null
+        quantityProductTextInput.error = null
         priceProductTextInput.error = null
         nameProductTextInput.isErrorEnabled = false
         descriptionProductTextInput.isErrorEnabled = false
+        quantityProductTextInput.isErrorEnabled = false
         priceProductTextInput.isErrorEnabled = false
     }
 
@@ -85,11 +89,13 @@ class CreateProductFragmentDialog: DialogFragment() {
         field: CreateProductField,
         nameProductTextInput: TextInputLayout,
         descriptionProductTextInput: TextInputLayout,
+        quantityTextInput: TextInputLayout,
         priceProductTextInput: TextInputLayout
     ): TextInputLayout{
         return when (field){
             CreateProductField.TITLE -> nameProductTextInput
             CreateProductField.DESCRIPTION -> descriptionProductTextInput
+            CreateProductField.QUANTITY -> quantityTextInput
             CreateProductField.PRICE -> priceProductTextInput
         }
     }

@@ -21,9 +21,10 @@ class CatalogAdapter: ListAdapter<ProductItem, CatalogAdapter.ProductViewHolder>
     inner class ProductViewHolder(private val binding: ItemProductBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(productItem: ProductItem){
             with(binding){
-                productIdTextView.text = productItem.productId
-                titleTextView.text = productItem.title
-                priceTextView.text = productItem.price
+                productIdValueTextView.text = productItem.productId
+                titleValueTextView.text = productItem.title
+                priceValueTextView.text = productItem.price
+                quantityValueTextView.text = productItem.quantity
 
                 root.setOnClickListener{ onItemClick?.onItemClick(productItem) }
             }

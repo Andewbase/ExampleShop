@@ -30,16 +30,23 @@ class ProductDetailsFragment : Fragment(R.layout.fragment_product_details) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.productFlow.observe(viewLifecycleOwner){ container ->
+        with(binding){
+            observeState()
+        }
+    }
+
+    private fun FragmentProductDetailsBinding.observeState(){
+        viewModel.productFlow.observe(viewLifecycleOwner){container ->
             when(container){
                 is Container.Success ->{
-                    binding.productDetailProgressBar.visibility = View.INVISIBLE
-                    binding.productIdTextView.text = container.value.productId
-                    binding.titleTextView.text = container.value.title
-                    binding.descriptionTextView.text = container.value.description
-                    binding.priceTextView.text = container.value.price
+                    productDetailProgressBar.visibility = View.INVISIBLE
+                    productIdValueTextView.text = container.value.productId
+                    titleValueTextView.text = container.value.title
+                    descriptionValueTextView.text = container.value.description
+                    priceValueTextView.text = container.value.price
+                    quantityValueTextView.text = container.value.quantity
                 }
-                is Container.Pending -> binding.productDetailProgressBar.visibility = View.VISIBLE
+                is Container.Pending -> productDetailProgressBar.visibility = View.VISIBLE
                 is Container.Error -> Toast.makeText(requireContext(), "Ошибка", Toast.LENGTH_SHORT).show()
             }
         }

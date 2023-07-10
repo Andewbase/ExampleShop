@@ -2,7 +2,7 @@ package com.example.catalog.presentation.createproduct
 
 import com.example.catalog.CatalogRouter
 import com.example.catalog.R
-import com.example.catalog.domain.GetCreatProductUseCase
+import com.example.catalog.domain.GetCreateProductUseCase
 import com.example.catalog.domain.entities.CreateProduct
 import com.example.catalog.domain.entities.CreateProductField
 import com.example.catalog.domain.exceptions.EmptyFieldException
@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CreateProductViewModel @Inject constructor(
-    private val createProductUseCase: GetCreatProductUseCase,
+    private val createProductUseCase: GetCreateProductUseCase,
     private val catalogRouter: CatalogRouter
 ): BaseViewModel() {
 

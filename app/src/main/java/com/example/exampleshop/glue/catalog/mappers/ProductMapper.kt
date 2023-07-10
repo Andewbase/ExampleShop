@@ -13,7 +13,8 @@ class ProductMapper @Inject constructor(){
             productId = dataEntity.productId,
             title = dataEntity.title,
             description = dataEntity.description,
-            price = dataEntity.price
+            price = dataEntity.price,
+            quantity = dataEntity.quantity.toString()
         )
     }
 
@@ -21,6 +22,7 @@ class ProductMapper @Inject constructor(){
         return CreateProductEntity(
             title = createProduct.title,
             description = createProduct.description,
+            quantity = createProduct.quantity.toInt(),
             price = createProduct.price
         )
     }

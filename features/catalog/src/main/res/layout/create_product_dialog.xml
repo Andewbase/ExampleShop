@@ -17,9 +17,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/name_product"
-            android:layout_marginStart="18dp"
-            android:layout_marginEnd="18dp"
-            android:layout_marginTop="18dp">
+            android:layout_marginStart="@dimen/core_theme_mediim_layout_space"
+            android:layout_marginEnd="@dimen/core_theme_mediim_layout_space"
+            android:layout_marginTop="@dimen/core_theme_mediim_layout_space">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/nameProductEditText"
@@ -36,9 +36,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/description_product"
-            android:layout_marginStart="18dp"
-            android:layout_marginEnd="18dp"
-            android:layout_marginTop="18dp">
+            android:layout_marginStart="@dimen/core_theme_mediim_layout_space"
+            android:layout_marginEnd="@dimen/core_theme_mediim_layout_space"
+            android:layout_marginTop="@dimen/core_theme_mediim_layout_space">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/descriptionProductEditText"
@@ -50,13 +50,32 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/quantityProductTextInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/quantity_product"
+            android:layout_marginStart="@dimen/core_theme_mediim_layout_space"
+            android:layout_marginEnd="@dimen/core_theme_mediim_layout_space"
+            android:layout_marginTop="@dimen/core_theme_mediim_layout_space">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/quantityProductEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:inputType="number"
+                android:imeOptions="actionNext"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/priceProductTextInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/price_product"
-            android:layout_marginStart="18dp"
-            android:layout_marginEnd="18dp"
-            android:layout_marginTop="18dp">
+            android:layout_marginStart="@dimen/core_theme_mediim_layout_space"
+            android:layout_marginEnd="@dimen/core_theme_mediim_layout_space"
+            android:layout_marginTop="@dimen/core_theme_mediim_layout_space">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/priceProductEditText"
@@ -73,9 +92,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginStart="18dp"
-            android:layout_marginEnd="18dp"
-            android:layout_marginTop="18dp"/>
+            android:layout_marginStart="@dimen/core_theme_mediim_layout_space"
+            android:layout_marginEnd="@dimen/core_theme_mediim_layout_space"
+            android:layout_marginTop="@dimen/core_theme_mediim_layout_space"/>
     </LinearLayout>
 
 </ScrollView>
